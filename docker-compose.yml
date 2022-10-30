@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mysql:
+    container_name: mud-mariadb
+    image: mariadb:10.9.3
+    platform: linux/amd64
+    environment:
+      MYSQL_MULTIPLE_DATABASES: mud
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql
+      - mysql-conf:/etc/mysql/conf.d
+
+  zookeeper:
+    container_name: mud-zookeeper
+    image: zookeeper:3.8.0
+    ports:
+      - "2181:2181"
+  kafka:
+    container_name: mud-kafka
+    image: bitnami/kafka:3.3.1
+    depends_on:
+      - mud-zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_CREATE_TOPICS: "changes.chat.0:1:1" # Topic명:Partition개수:Replica개수
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  mysql-data:
+    driver: local
+  mysql-conf:
+    driver: local
