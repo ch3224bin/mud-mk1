@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.domain.map;
+package com.jefflife.gameserver.map.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;

@@ -1,5 +1,8 @@
-package com.jefflife.gameserver.domain.map;
+package com.jefflife.gameserver.map.domain;
 
+import com.jefflife.gameserver.map.domain.Direction;
+import com.jefflife.gameserver.map.domain.Room;
+import com.jefflife.gameserver.map.domain.WayOut;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
