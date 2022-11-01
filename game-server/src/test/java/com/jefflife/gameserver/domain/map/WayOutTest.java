@@ -33,7 +33,7 @@ public class WayOutTest {
     wo1.linkAnotherRoom(room2, Direction.EAST);
 
     // Then
-    WayOut wo2 = room2.getWayoutByDirection(Direction.EAST).get();
+    WayOut wo2 = room2.getWayOutByDirection(Direction.EAST).get();
     assertAll(
             () -> assertThat(wo1.getDoor()).isNotNull().isEqualTo(wo2.getDoor()),
             () -> assertThat(wo1.getNextRoom()).isNotNull().isEqualTo(wo2.getRoom()),

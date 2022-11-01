@@ -24,40 +24,37 @@ public class Room {
 
 	@Embedded
 	@Builder.Default
-	private WayOuts wayouts = new WayOuts();
+	private WayOuts wayOuts = new WayOuts();
 
-	public List<WayOut> getSortedWayouts() {
-		return wayouts.getSortedWayOuts();
+	public List<WayOut> getSortedWayOuts() {
+		return wayOuts.getSortedWayOuts();
 	}
 
 	public String getExitString() {
-		return wayouts.getExitString();
+		return wayOuts.getExitString();
 	}
 
-	public Optional<WayOut> getWayoutByDirection(Direction direction) {
-		return wayouts.getWayoutByDirection(direction);
+	public Optional<WayOut> getWayOutByDirection(Direction direction) {
+		return wayOuts.getWayOutByDirection(direction);
 	}
 
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public WayOut createWayout(Room nextRoom, Direction direction) {
+	public WayOut createWayOut(Room nextRoom, Direction direction) {
 		WayOut wayout = WayOut.builder()
 				.direction(direction)
 				.room(this)
 				.nextRoom(nextRoom)
 				.build();
-		wayouts.add(wayout);
+		wayOuts.add(wayout);
 		return wayout;
 	}
 
 	public void linkAnotherRoom(Room anotherRoom, Direction myWay, Direction yourWay) {
-		this.createWayout(anotherRoom, myWay)
+		this.createWayOut(anotherRoom, myWay)
 			.linkAnotherRoom(anotherRoom, yourWay);
+	}
+
+	public void update(String summary, String description) {
+		this.summary = summary;
+		this.description = description;
 	}
 }

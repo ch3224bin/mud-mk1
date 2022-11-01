@@ -14,8 +14,8 @@ public class DoorTest {
     // given
     Room westRoom = Room.builder().id(1L).summary("Test1").description("Test1").build();
     Room eastRoom = Room.builder().id(2L).summary("Test2").description("Test2").build();
-    WayOut eastWayOut = westRoom.createWayout(eastRoom, Direction.EAST);
-    WayOut westWayOut = eastRoom.createWayout(westRoom, Direction.WEST);
+    WayOut eastWayOut = westRoom.createWayOut(eastRoom, Direction.EAST);
+    WayOut westWayOut = eastRoom.createWayOut(westRoom, Direction.WEST);
 
     // when
     Door door = Door.setup(eastWayOut, westWayOut);

@@ -34,7 +34,7 @@ public class WayOuts {
             .orElse("없음");
   }
 
-  public Optional<WayOut> getWayoutByDirection(Direction direction) {
+  public Optional<WayOut> getWayOutByDirection(Direction direction) {
     return wayOuts.stream()
       .filter(wayOut -> wayOut.getDirection() == direction)
       .findFirst();

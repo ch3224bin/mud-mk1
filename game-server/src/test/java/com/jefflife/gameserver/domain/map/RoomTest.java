@@ -19,13 +19,13 @@ public class RoomTest {
     Room nextRoom = Room.builder().id(2L).summary("Test").description("Test").build();
 
     // when
-    WayOut wayout = room.createWayout(nextRoom, direction);
+    WayOut wayout = room.createWayOut(nextRoom, direction);
 
     // then
     assertAll(
             () -> assertThat(wayout.getDirection()).isEqualTo(direction),
             () -> assertThat(wayout.getRoom()).isEqualTo(room),
-            () -> assertThat(room.getWayouts().getSortedWayOuts()).containsOnlyOnce(wayout)
+            () -> assertThat(room.getWayOuts().getSortedWayOuts()).containsOnlyOnce(wayout)
     );
   }
 
@@ -41,8 +41,8 @@ public class RoomTest {
 
     // then
     assertAll(
-            () -> assertThat(room.getWayoutByDirection(Direction.EAST)).isNotEmpty(),
-            () -> assertThat(room.getWayoutByDirection(Direction.EAST).get().getNextRoom()).isEqualTo(nextRoom)
+            () -> assertThat(room.getWayOutByDirection(Direction.EAST)).isNotEmpty(),
+            () -> assertThat(room.getWayOutByDirection(Direction.EAST).get().getNextRoom()).isEqualTo(nextRoom)
     );
   }
 }
