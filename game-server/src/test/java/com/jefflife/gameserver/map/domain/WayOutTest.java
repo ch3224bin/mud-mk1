@@ -1,9 +1,5 @@
 package com.jefflife.gameserver.map.domain;
 
-import com.jefflife.gameserver.map.domain.Direction;
-import com.jefflife.gameserver.map.domain.Door;
-import com.jefflife.gameserver.map.domain.Room;
-import com.jefflife.gameserver.map.domain.WayOut;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +26,8 @@ public class WayOutTest {
   @Test
   void testLinkAnotherWayOut() {
     // Given
-    Room room2 = Room.builder().id(2L).build();
-    WayOut wo1 = WayOut.builder().id(1L).room(Room.builder().id(1L).build()).nextRoom(room2).build();
+    Room room2 = Room.withOutWayOuts(2L, null, null);
+    WayOut wo1 = WayOut.builder().id(1L).room(Room.withOutWayOuts(1L, null, null)).nextRoom(room2).build();
 
     // When
     wo1.linkAnotherRoom(room2, Direction.EAST);

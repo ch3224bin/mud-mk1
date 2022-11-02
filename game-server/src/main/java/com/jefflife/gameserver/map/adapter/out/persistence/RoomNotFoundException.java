@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.map.application.service;
+package com.jefflife.gameserver.map.adapter.out.persistence;
 
 public class RoomNotFoundException extends RuntimeException {
   public RoomNotFoundException(long id) {

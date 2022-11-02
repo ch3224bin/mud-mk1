@@ -1,30 +1,38 @@
 package com.jefflife.gameserver.map.domain;
 
-import lombok.*;
+import lombok.Getter;
 
-import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 
-@Entity
-@Table(name = "room")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter @AllArgsConstructor @Builder @EqualsAndHashCode(of = "id")
 public class Room {
+	@Getter private final Long id;
+	@Getter private String summary;
+	@Getter private String description;
+	private final WayOuts wayOuts;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Room(Long id, String summary, String description, List<WayOut> wayOuts) {
+		this(id, summary, description, new WayOuts(wayOuts));
+	}
 
-	@Column(name = "summary", nullable = false)
-	private String summary;
+	private Room(Long id, String summary, String description, WayOuts wayOuts) {
+		this.id = id;
+		this.summary = summary;
+		this.description = description;
+		this.wayOuts = wayOuts;
+	}
 
-	@Column(name = "description", nullable = false)
-	private String description;
+	public static Room of(Long id, String summary, String description, List<WayOut> wayOuts) {
+		return new Room(id, summary, description, wayOuts);
+	}
 
-	@Embedded
-	@Builder.Default
-	private WayOuts wayOuts = new WayOuts();
+	public static Room withOutWayOuts(Long id, String summary, String description) {
+		return new Room(id, summary, description, new WayOuts());
+	}
+
+	public static Room withOutId(String summary, String description) {
+		return new Room(null, summary, description, new WayOuts());
+	}
 
 	public List<WayOut> getSortedWayOuts() {
 		return wayOuts.getSortedWayOuts();

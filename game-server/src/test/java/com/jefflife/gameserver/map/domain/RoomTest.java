@@ -1,8 +1,5 @@
 package com.jefflife.gameserver.map.domain;
 
-import com.jefflife.gameserver.map.domain.Direction;
-import com.jefflife.gameserver.map.domain.Room;
-import com.jefflife.gameserver.map.domain.WayOut;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,8 +15,8 @@ public class RoomTest {
   @ParameterizedTest
   public void testCreateEastWayOut(Direction direction) {
     // given
-    Room room = Room.builder().id(1L).summary("Test").description("Test").build();
-    Room nextRoom = Room.builder().id(2L).summary("Test").description("Test").build();
+    Room room = Room.withOutWayOuts(1L, "Test1", "Test1");
+    Room nextRoom = Room.withOutWayOuts(2L, "Test2", "Test2");
 
     // when
     WayOut wayout = room.createWayOut(nextRoom, direction);
@@ -28,7 +25,7 @@ public class RoomTest {
     assertAll(
             () -> assertThat(wayout.getDirection()).isEqualTo(direction),
             () -> assertThat(wayout.getRoom()).isEqualTo(room),
-            () -> assertThat(room.getWayOuts().getSortedWayOuts()).containsOnlyOnce(wayout)
+            () -> assertThat(room.getSortedWayOuts()).containsOnlyOnce(wayout)
     );
   }
 
@@ -36,8 +33,8 @@ public class RoomTest {
   @Test
   void testLinkAnotherRoom() {
     // given
-    Room room = Room.builder().id(1L).summary("Test").description("Test").build();
-    Room nextRoom = Room.builder().id(2L).summary("Test").description("Test").build();
+    Room room = Room.withOutWayOuts(1L, "Test1", "Test1");
+    Room nextRoom = Room.withOutWayOuts(2L, "Test2", "Test2");
 
     // when
     room.linkAnotherRoom(nextRoom, Direction.EAST, Direction.WEST);

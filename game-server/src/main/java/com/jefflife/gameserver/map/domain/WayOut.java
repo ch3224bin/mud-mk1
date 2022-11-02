@@ -2,35 +2,14 @@ package com.jefflife.gameserver.map.domain;
 
 import lombok.*;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "way_out")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter @AllArgsConstructor @Builder
 public class WayOut implements Comparable<WayOut> {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	@ManyToOne
-	@JoinColumn(name = "room_id", nullable = false)
 	private Room room;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "direction", nullable = false)
 	private Direction direction;
-
-	@OneToOne
-	@JoinColumn(name = "next_room_id", nullable = false)
 	private Room nextRoom;
-
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinColumn(name = "door_id", nullable = false)
 	private Door door;
-
-	@Column(name = "is_show", nullable = false, columnDefinition = "boolean default true")
 	private boolean isShow = true;
 
 	@Override

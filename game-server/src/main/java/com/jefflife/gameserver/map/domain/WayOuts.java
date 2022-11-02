@@ -1,23 +1,20 @@
 package com.jefflife.gameserver.map.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Embeddable
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
 public class WayOuts {
-  @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<WayOut> wayOuts = new ArrayList<>();
+  private final List<WayOut> wayOuts;
+
+  public WayOuts() {
+    wayOuts = new ArrayList<>();
+  }
+
+  public WayOuts(List<WayOut> wayOuts) {
+    this.wayOuts = wayOuts;
+  }
 
   public List<WayOut> getSortedWayOuts() {
     return wayOuts.stream()

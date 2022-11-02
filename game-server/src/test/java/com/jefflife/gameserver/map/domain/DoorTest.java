@@ -1,9 +1,5 @@
 package com.jefflife.gameserver.map.domain;
 
-import com.jefflife.gameserver.map.domain.Direction;
-import com.jefflife.gameserver.map.domain.Door;
-import com.jefflife.gameserver.map.domain.Room;
-import com.jefflife.gameserver.map.domain.WayOut;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +12,8 @@ public class DoorTest {
   @Test
   void testLink() {
     // given
-    Room westRoom = Room.builder().id(1L).summary("Test1").description("Test1").build();
-    Room eastRoom = Room.builder().id(2L).summary("Test2").description("Test2").build();
+    Room westRoom = Room.withOutWayOuts(1L, "Test1", "Test1");
+    Room eastRoom = Room.withOutWayOuts(2L, "Test2", "Test2");
     WayOut eastWayOut = westRoom.createWayOut(eastRoom, Direction.EAST);
     WayOut westWayOut = eastRoom.createWayOut(westRoom, Direction.WEST);
 

@@ -9,10 +9,7 @@ public class CreateRoomCommand {
 	private String summary;
 	private String description;
 
-	public Room toEntity() {
-		return Room.builder()
-				.summary(summary)
-				.description(description)
-				.build();
+	public Room toDomain() {
+		return Room.withOutId(summary, description);
 	}
 }
