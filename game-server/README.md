@@ -12,3 +12,15 @@ graph LR;
   application.service.RoomService --> application.port.out.RoomPort;
   application.port.out.RoomPort --> adapter.in.persistence.RoomRepository;
 ```
+
+### map 연관 관계
+
+연결 관계는 아래와 같다.  
+> 방 - 출구 - 문 - 출구 - 방  
+
+```mermaid
+erDiagram
+    Area ||--|{ Room : places
+    Room ||--|{ WayOut : contains
+    WayOut }|--|{ Door : contains
+```
