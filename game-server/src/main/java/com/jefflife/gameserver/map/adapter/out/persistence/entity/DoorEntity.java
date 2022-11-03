@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.map.adapter.out.persistence;
+package com.jefflife.gameserver.map.adapter.out.persistence.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

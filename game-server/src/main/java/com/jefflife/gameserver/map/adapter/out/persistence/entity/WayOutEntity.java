@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.map.adapter.out.persistence;
+package com.jefflife.gameserver.map.adapter.out.persistence.entity;
 
 import com.jefflife.gameserver.map.domain.Direction;
 import com.jefflife.gameserver.map.domain.WayOut;

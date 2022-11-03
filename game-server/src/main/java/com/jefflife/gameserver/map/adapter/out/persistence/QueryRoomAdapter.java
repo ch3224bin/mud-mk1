@@ -1,5 +1,6 @@
 package com.jefflife.gameserver.map.adapter.out.persistence;
 
+import com.jefflife.gameserver.map.adapter.out.persistence.entity.RoomEntity;
 import com.jefflife.gameserver.map.application.port.out.QueryRoomPort;
 import com.jefflife.gameserver.map.application.port.out.SaveRoomPort;
 import com.jefflife.gameserver.map.domain.Room;
