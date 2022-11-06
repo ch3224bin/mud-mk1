@@ -27,4 +27,9 @@ public class AreaEntity {
 			joinColumns = @JoinColumn(name = "area_id", nullable = false),
 			inverseJoinColumns = @JoinColumn(name = "room_id", nullable =  false, unique = true))
 	private List<RoomEntity> rooms;
+
+	public AreaEntity(String name, AreaType type) {
+		this.name = name;
+		this.type = type;
+	}
 }
