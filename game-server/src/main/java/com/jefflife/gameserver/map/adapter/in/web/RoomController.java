@@ -7,8 +7,14 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 방 관리 API
@@ -42,8 +48,9 @@ public class RoomController {
 	}
 
 	@PostMapping
-	public ResponseEntity<EntityModel<RoomModel>> createRoom(@RequestBody CreateRoomCommand req) {
-		EntityModel<RoomModel> res = assembler.toModel(manageRoomUseCase.createRoom(req));
+	public ResponseEntity<EntityModel<RoomModel>> createRoom(@RequestParam("summary") String summary,
+															 @RequestParam("description") String description) {
+		EntityModel<RoomModel> res = assembler.toModel(manageRoomUseCase.createRoom(new CreateRoomCommand(summary, description)));
 
 		return ResponseEntity
 	    .created(res.getRequiredLink(IanaLinkRelations.SELF).toUri())
@@ -66,5 +73,15 @@ public class RoomController {
 											 @RequestParam("to") String to) {
 		LinkedRoomResponse linkedRoomResponse = manageRoomUseCase.linkAnotherRoom(id, anotherRoomId, from, to);
 		return ResponseEntity.ok(linkedRoomResponse);
+	}
+
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ConstraintViolationException.class)
+	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {
+		Map<String, String> errors = new HashMap<>();
+		for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
+			errors.put(violation.getPropertyPath().toString(), violation.getMessage());
+		}
+		return errors;
 	}
 }
