@@ -9,4 +9,9 @@ import lombok.NoArgsConstructor;
 public class UpdateRoomCommand {
 	private String summary;
 	private String description;
+
+	public UpdateRoomCommand(String summary, String description) {
+		this.summary = summary;
+		this.description = description;
+	}
 }
