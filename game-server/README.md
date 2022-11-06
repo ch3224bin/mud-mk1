@@ -4,23 +4,13 @@
 
 ```mermaid
 graph LR;
-  adapter.in.web.RoomController --> application.port.in.LoadRoomQuery;
-  adapter.in.web.RoomController --> application.port.in.ManageRoomUseCase;
-  application.service.RoomService --> application.port.in.LoadRoomQuery;
-  application.service.RoomService --> application.port.in.ManageRoomUseCase;
-  application.service.RoomService --> domain.*;
-  application.service.RoomService --> application.port.out.RoomPort;
-  application.port.out.RoomPort --> adapter.in.persistence.RoomRepository;
+  adapter.in.web --> application.port.in;
+  application.service --> application.port.in;
+  application.service --> application.port.out;
+  application.port.out --> adapter.out.persistence;
 ```
 
 ### map 연관 관계
 
 연결 관계는 아래와 같다.  
 > 방 - 출구 - 문 - 출구 - 방  
-
-```mermaid
-erDiagram
-    Area ||--|{ Room : places
-    Room ||--|{ WayOut : contains
-    WayOut }|--|{ Door : contains
-```
