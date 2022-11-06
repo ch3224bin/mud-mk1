@@ -66,16 +66,6 @@ public class RoomController {
 				.build();
 	}
 
-	@PostMapping("/{id}/links")
-	public ResponseEntity<LinkedRoomResponse> linkAnotherRoom(@PathVariable("id") long id,
-											 @RequestParam("anotherRoomId") long anotherRoomId,
-											 @RequestParam("from") String from,
-											 @RequestParam("to") String to) {
-		LinkedRoomResponse linkedRoomResponse = manageRoomUseCase.linkAnotherRoom(
-				new LinkRoomCommand(id, anotherRoomId, from, to));
-		return ResponseEntity.ok(linkedRoomResponse);
-	}
-
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ConstraintViolationException.class)
 	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {

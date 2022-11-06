@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RoomService implements LoadRoomQuery, ManageRoomUseCase {
+public class RoomService implements LoadRoomQuery, ManageRoomUseCase, LinkRoomUseCase {
 
 	private final QueryRoomPort queryRoomPort;
 	private final SaveRoomPort saveRoomPort;
