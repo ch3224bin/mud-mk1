@@ -16,8 +16,8 @@ public class LinkRoomController {
     }
 
     @PostMapping("/{id}/links")
-    public ResponseEntity<LinkedRoomResponse> linkAnotherRoom(@PathVariable("id") long id,
-                                                              @RequestParam("anotherRoomId") long anotherRoomId,
+    public ResponseEntity<LinkedRoomResponse> linkAnotherRoom(@PathVariable("id") Long id,
+                                                              @RequestParam("anotherRoomId") Long anotherRoomId,
                                                               @RequestParam("from") String from,
                                                               @RequestParam("to") String to) {
         LinkedRoomResponse linkedRoomResponse = linkRoomUseCase.linkAnotherRoom(
