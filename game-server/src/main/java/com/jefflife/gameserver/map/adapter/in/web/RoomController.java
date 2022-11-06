@@ -3,6 +3,7 @@ package com.jefflife.gameserver.map.adapter.in.web;
 import com.jefflife.gameserver.map.application.port.in.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.PagedModel;
@@ -10,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 방 제작 API
+ * 방 관리 API
  *
  * @author ChangHo Vin
  */
@@ -29,9 +30,9 @@ public class RoomController {
 	}
 
 	@GetMapping
-	public ResponseEntity<PagedModel<EntityModel<RoomModel>>> paging(Pageable pageable) {
+	public ResponseEntity<PagedModel<EntityModel<RoomModel>>> paging(Pageable pageable, PagedResourcesAssembler<RoomModel> pagedResourcesAssembler) {
 		Page<RoomModel> pagedRooms = loadRoomQuery.getPagedRooms(pageable);
-		PagedModel<EntityModel<RoomModel>> body = assembler.toPagedModel(pagedRooms);
+		PagedModel<EntityModel<RoomModel>> body = pagedResourcesAssembler.toModel(pagedRooms);
 		return ResponseEntity.ok(body);
 	}
 
