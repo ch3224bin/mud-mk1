@@ -3,7 +3,6 @@ package com.jefflife.gameserver.map.application.service;
 import com.jefflife.gameserver.map.application.port.in.*;
 import com.jefflife.gameserver.map.application.port.out.QueryRoomPort;
 import com.jefflife.gameserver.map.application.port.out.SaveRoomPort;
-import com.jefflife.gameserver.map.domain.Direction;
 import com.jefflife.gameserver.map.domain.Room;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,10 +44,10 @@ public class RoomService implements LoadRoomQuery, ManageRoomUseCase {
 	}
 
 	@Override
-	public LinkedRoomResponse linkAnotherRoom(long roomId1, long roomId2, String dir1, String dir2) {
-		Room room1 = queryRoomPort.findById(roomId1);
-		Room room2 = queryRoomPort.findById(roomId2);
-		room1.linkAnotherRoom(room2, Direction.valueOf(dir1), Direction.valueOf(dir2));
+	public LinkedRoomResponse linkAnotherRoom(LinkRoomCommand linkRoomCommand) {
+		Room room1 = queryRoomPort.findById(linkRoomCommand.getSourceRoomId());
+		Room room2 = queryRoomPort.findById(linkRoomCommand.getDestinationRoomId());
+		room1.linkAnotherRoom(room2, linkRoomCommand.getSourceDir(), linkRoomCommand.getDestinationDir());
 		return LinkedRoomResponse.of(room1, room2);
 	}
 }

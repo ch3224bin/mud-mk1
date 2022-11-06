@@ -71,7 +71,8 @@ public class RoomController {
 											 @RequestParam("anotherRoomId") long anotherRoomId,
 											 @RequestParam("from") String from,
 											 @RequestParam("to") String to) {
-		LinkedRoomResponse linkedRoomResponse = manageRoomUseCase.linkAnotherRoom(id, anotherRoomId, from, to);
+		LinkedRoomResponse linkedRoomResponse = manageRoomUseCase.linkAnotherRoom(
+				new LinkRoomCommand(id, anotherRoomId, from, to));
 		return ResponseEntity.ok(linkedRoomResponse);
 	}
 
