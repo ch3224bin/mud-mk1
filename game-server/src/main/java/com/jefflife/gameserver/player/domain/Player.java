@@ -1,0 +1,13 @@
+package com.jefflife.gameserver.player.domain;
+
+public class Player {
+    private final long id;
+    private final long roomId;
+    private final String name;
+
+    public Player(long id, long roomId, String name) {
+        this.id = id;
+        this.roomId = roomId;
+        this.name = name;
+    }
+}
