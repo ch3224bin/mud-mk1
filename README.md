@@ -8,8 +8,8 @@ graph LR;
     front-api-server-->auth-server;
     front-api-server-->session-server;
     front-api-server-->game-server;
-    game-server-->message-server;
-    message-server-->client;
+    game-server-->message-queue;
+    front-api-server-->message-queue;
 ```
 
 ### front-api-server
