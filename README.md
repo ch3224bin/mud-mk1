@@ -8,8 +8,9 @@ graph LR;
     front-api-server-->auth-server;
     front-api-server-->session-server;
     front-api-server-->game-server;
-    game-server-->message-server;
-    message-server-->client;
+    game-server-->message-queue;
+    message-server-->message-queue;
+    client-->message-server
 ```
 
 ### front-api-server
@@ -20,9 +21,9 @@ client에서 받는 명령어 처리
 
 게임 관련 전반을 처리
 
-### message-server
+### message-queue
 
-client에 메세지 push
+클라이언트에 메세지 전송 스트리밍을 위해 사용
 
 ### session-server
 
