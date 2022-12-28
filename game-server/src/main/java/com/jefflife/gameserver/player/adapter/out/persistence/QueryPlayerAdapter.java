@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 import java.util.NoSuchElementException;
 
 @Component
-public class PlayerAdapter implements QueryPlayerPort {
+public class QueryPlayerAdapter implements QueryPlayerPort {
     private final PlayerRepository playerRepository;
 
-    public PlayerAdapter(PlayerRepository playerRepository) {
+    public QueryPlayerAdapter(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
 
@@ -18,6 +18,6 @@ public class PlayerAdapter implements QueryPlayerPort {
     public Player findById(long id) {
         return playerRepository.findById(id)
                 .map(o -> new Player(o.getId(), o.getRoomId(), o.getName()))
-                .orElseThrow(() -> new NoSuchElementException());
+                .orElseThrow(() -> new NoSuchElementException("Player not found. player id: " + id));
     }
 }

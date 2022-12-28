@@ -1,5 +1,8 @@
 package com.jefflife.gameserver.player.domain;
 
+import lombok.Getter;
+
+@Getter
 public class Player {
     private final long id;
     private final long roomId;
