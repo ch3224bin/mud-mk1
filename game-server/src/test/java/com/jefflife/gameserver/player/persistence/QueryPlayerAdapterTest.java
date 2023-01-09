@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.map.persistence;
+package com.jefflife.gameserver.player.persistence;
 
 import com.jefflife.gameserver.player.adapter.out.persistence.QueryPlayerAdapter;
 import com.jefflife.gameserver.player.adapter.out.persistence.PlayerRepository;
