@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.see.application.port.out;
+package com.jefflife.gameserver.look.application.port.out;
 
 import com.jefflife.gameserver.shared.Seeable;
 

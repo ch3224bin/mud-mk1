@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.see.acceptable;
+package com.jefflife.gameserver.look.acceptable;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SeeSystemTest {
+public class LookSystemTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -28,7 +28,7 @@ public class SeeSystemTest {
         HttpEntity<Void> request = new HttpEntity<>(null, headers);
 
         ResponseEntity<Object> response = restTemplate.exchange(
-                "/see?playerId={playerId}",
+                "/look?playerId={playerId}",
                 HttpMethod.GET,
                 request,
                 Object.class,

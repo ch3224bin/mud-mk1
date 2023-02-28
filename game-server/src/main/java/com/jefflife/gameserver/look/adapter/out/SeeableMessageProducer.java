@@ -1,6 +1,6 @@
-package com.jefflife.gameserver.see.adapter.out;
+package com.jefflife.gameserver.look.adapter.out;
 
-import com.jefflife.gameserver.see.application.port.out.SendMessagePort;
+import com.jefflife.gameserver.look.application.port.out.SendMessagePort;
 import com.jefflife.gameserver.shared.Seeable;
 import org.springframework.stereotype.Component;
 
