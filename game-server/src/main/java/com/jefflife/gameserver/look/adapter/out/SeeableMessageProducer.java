@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SeeableMessageProducer implements SendMessagePort {
     @Override
-    public void send(String target, Seeable object) {
+    public void send(long target, Seeable object) {
 
     }
 }

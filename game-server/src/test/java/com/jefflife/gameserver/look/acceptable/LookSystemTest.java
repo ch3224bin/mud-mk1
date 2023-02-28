@@ -17,7 +17,7 @@ public class LookSystemTest {
 
     @DisplayName("봐 => 내가 서 있는 장소를 보여준다")
     @Test
-    @Sql("classpath:SeeSystemTest.sql")
+    @Sql("classpath:LookSystemTest.sql")
     void testJustSee() {
         // given
         String playerId = "1";

@@ -16,7 +16,7 @@ public class LookController {
     }
 
     @GetMapping("/look")
-    public ResponseEntity<Void> justSee(@RequestParam String playerId) {
+    public ResponseEntity<Void> justSee(@RequestParam("playerId") long playerId) {
         lookAtRoomUseCase.lookAtMyRoom(playerId);
         return ResponseEntity.ok().build();
     }

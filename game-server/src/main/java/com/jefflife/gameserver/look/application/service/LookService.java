@@ -17,7 +17,7 @@ public class LookService implements LookAtRoomUseCase {
     }
 
     @Override
-    public void lookAtMyRoom(String playerId) {
+    public void lookAtMyRoom(long playerId) {
         Seeable room = findRoomPort.findByPlayerId(playerId);
         sendMessagePort.send(playerId, room);
     }

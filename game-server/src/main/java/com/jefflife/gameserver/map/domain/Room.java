@@ -1,11 +1,14 @@
 package com.jefflife.gameserver.map.domain;
 
+import com.jefflife.gameserver.shared.Seeable;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.List;
 import java.util.Optional;
 
-public class Room {
+@EqualsAndHashCode(of = "id")
+public class Room implements Seeable {
 	@Getter private final Long id;
 	@Getter private String summary;
 	@Getter private String description;

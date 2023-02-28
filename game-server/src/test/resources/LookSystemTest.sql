@@ -27,3 +27,6 @@ insert into way_out (room_id, door_id, direction, next_room_id) values
 (4, 3, 'NORTH', 1),
 (1, 4, 'NORTH', 5),
 (5, 4, 'SOUTH', 1);
+
+insert into player (id, name, room_id) values
+(1, '테스트 플레이어', 1);
