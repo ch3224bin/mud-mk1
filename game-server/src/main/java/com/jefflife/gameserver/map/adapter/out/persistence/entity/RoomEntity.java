@@ -37,12 +37,12 @@ public class RoomEntity {
 		return null;
 	}
 
-	public static Room toDomain(RoomEntity roomEntity) {
+	public Room toDomain() {
 		return Room.of(
-				roomEntity.getId(),
-				roomEntity.getSummary(),
-				roomEntity.getDescription(),
-				WayOutEntity.toDomainList(roomEntity.getWayOuts())
+				id,
+				summary,
+				description,
+				WayOutEntity.toDomainList(wayOuts)
 		);
 	}
 }

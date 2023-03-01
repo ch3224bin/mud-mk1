@@ -1,6 +1,7 @@
 package com.jefflife.gameserver.map.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,12 @@ public class Door {
 
 	public void lock() {
 		this.isLocked = true;
+	}
+
+	@Builder
+	public Door(long id, boolean isLocked) {
+		this.id = id;
+		this.isLocked = isLocked;
 	}
 
 	public static Door setup(WayOut wo1, WayOut wo2) {

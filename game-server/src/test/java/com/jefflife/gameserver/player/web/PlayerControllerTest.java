@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.player.web;
 
 import com.jefflife.gameserver.player.adapter.in.web.PlayerController;
-import com.jefflife.gameserver.player.applicatoin.port.in.PlayerQuery;
+import com.jefflife.gameserver.player.applicatoin.port.in.LoadPlayerQuery;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -19,7 +19,7 @@ public class PlayerControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    PlayerQuery playerQuery;
+    LoadPlayerQuery loadPlayerQuery;
 
     @Test
     void testGetPlayer() throws Exception {
@@ -32,7 +32,7 @@ public class PlayerControllerTest {
         .andExpect(status().isOk());
 
         // then
-        then(playerQuery).should()
+        then(loadPlayerQuery).should()
                 .getPlayer(eq(1L));
     }
 }

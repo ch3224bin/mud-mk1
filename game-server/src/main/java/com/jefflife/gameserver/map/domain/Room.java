@@ -1,6 +1,5 @@
 package com.jefflife.gameserver.map.domain;
 
-import com.jefflife.gameserver.shared.Seeable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -8,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @EqualsAndHashCode(of = "id")
-public class Room implements Seeable {
+public class Room {
 	@Getter private final Long id;
 	@Getter private String summary;
 	@Getter private String description;
@@ -52,16 +51,21 @@ public class Room implements Seeable {
 	public WayOut createWayOut(Room nextRoom, Direction direction) {
 		WayOut wayout = WayOut.builder()
 				.direction(direction)
-				.room(this)
-				.nextRoom(nextRoom)
+				.roomId(id)
+				.nextRoomId(nextRoom.id)
 				.build();
 		wayOuts.add(wayout);
 		return wayout;
 	}
 
 	public void linkAnotherRoom(Room anotherRoom, Direction myWay, Direction yourWay) {
-		this.createWayOut(anotherRoom, myWay)
-			.linkAnotherRoom(anotherRoom, yourWay);
+		WayOut wayOut = this.createWayOut(anotherRoom, myWay);
+		linkAnotherRoom(wayOut, anotherRoom, yourWay);
+	}
+
+	private void linkAnotherRoom(WayOut wayOut, Room anotherRoom, Direction yourWay) {
+		WayOut anotherWayOut = anotherRoom.createWayOut(this, yourWay);
+		Door.setup(wayOut, anotherWayOut);
 	}
 
 	public void update(String summary, String description) {

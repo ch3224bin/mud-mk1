@@ -24,8 +24,8 @@ public class DoorTest {
     assertAll(
       () -> assertThat(eastWayOut.getDoor()).isEqualTo(door),
       () -> assertThat(westWayOut.getDoor()).isEqualTo(door),
-      () -> assertThat(eastWayOut.getNextRoom()).isEqualTo(eastRoom),
-      () -> assertThat(westWayOut.getNextRoom()).isEqualTo(westRoom)
+      () -> assertThat(eastWayOut.getNextRoomId()).isEqualTo(eastRoom.getId()),
+      () -> assertThat(westWayOut.getNextRoomId()).isEqualTo(westRoom.getId())
     );
   }
 }

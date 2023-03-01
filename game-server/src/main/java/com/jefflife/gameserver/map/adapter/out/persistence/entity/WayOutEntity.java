@@ -42,7 +42,14 @@ public class WayOutEntity {
 				.toList();
 	}
 
-	public static WayOut toDomain(WayOutEntity wayOut) {
-		return null;
+	public WayOut toDomain() {
+		return WayOut.builder()
+				.id(this.id)
+				.roomId(this.room.getId())
+				.direction(this.direction)
+				.nextRoomId(this.nextRoom.getId())
+				.door(this.door.toDomain())
+				.isShow(this.isShow)
+				.build();
 	}
 }

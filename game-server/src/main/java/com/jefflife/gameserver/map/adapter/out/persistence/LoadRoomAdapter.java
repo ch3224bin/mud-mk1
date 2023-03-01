@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.map.adapter.out.persistence;
 
 import com.jefflife.gameserver.map.adapter.out.persistence.entity.RoomEntity;
-import com.jefflife.gameserver.map.application.port.out.QueryRoomPort;
+import com.jefflife.gameserver.map.application.port.out.LoadRoomPort;
 import com.jefflife.gameserver.map.application.port.out.SaveRoomPort;
 import com.jefflife.gameserver.map.domain.Room;
 import org.springframework.data.domain.Page;
@@ -9,10 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 @Component
-public class QueryRoomAdapter implements QueryRoomPort, SaveRoomPort {
+public class LoadRoomAdapter implements LoadRoomPort, SaveRoomPort {
     private final RoomRepository roomRepository;
 
-    public QueryRoomAdapter(RoomRepository roomRepository) {
+    public LoadRoomAdapter(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
 
@@ -30,6 +30,7 @@ public class QueryRoomAdapter implements QueryRoomPort, SaveRoomPort {
 
     @Override
     public Room save(Room room) {
-        return RoomEntity.toDomain(roomRepository.save(new RoomEntity(room)));
+        RoomEntity roomEntity = roomRepository.save(new RoomEntity(room));
+        return roomEntity.toDomain();
     }
 }

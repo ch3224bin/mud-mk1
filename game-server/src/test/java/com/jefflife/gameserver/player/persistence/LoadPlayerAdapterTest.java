@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.player.persistence;
 
-import com.jefflife.gameserver.player.adapter.out.persistence.QueryPlayerAdapter;
+import com.jefflife.gameserver.player.adapter.out.persistence.LoadPlayerAdapter;
 import com.jefflife.gameserver.player.adapter.out.persistence.PlayerRepository;
 import com.jefflife.gameserver.player.adapter.out.persistence.entity.PlayerEntity;
 import com.jefflife.gameserver.player.domain.Player;
@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Import;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@Import(QueryPlayerAdapter.class)
-public class QueryPlayerAdapterTest {
+@Import(LoadPlayerAdapter.class)
+public class LoadPlayerAdapterTest {
     @Autowired
-    private QueryPlayerAdapter queryPlayerAdapter;
+    private LoadPlayerAdapter queryPlayerAdapter;
 
     @Autowired
     private PlayerRepository playerRepository;

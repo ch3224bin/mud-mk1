@@ -14,8 +14,8 @@ public class WayOutModel {
 	
 	public WayOutModel(WayOut wayout) {
 		this.id = wayout.getId();
-		this.roomId = wayout.getRoom().getId();
-		this.nextRoomId = wayout.getNextRoom().getId();
+		this.roomId = wayout.getRoomId();
+		this.nextRoomId = wayout.getNextRoomId();
 		this.direction = wayout.getDirection().getName();
 		this.isShow = wayout.isShow();
 		this.isLocked = wayout.getDoor().isLocked();

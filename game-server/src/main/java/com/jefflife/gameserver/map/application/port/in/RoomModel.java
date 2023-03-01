@@ -1,6 +1,8 @@
 package com.jefflife.gameserver.map.application.port.in;
 
 import com.jefflife.gameserver.map.domain.Room;
+import com.jefflife.gameserver.shared.Seeable;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.hateoas.server.core.Relation;
 
@@ -8,8 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
+@EqualsAndHashCode(of = "id")
 @Relation(collectionRelation = "rooms", itemRelation = "room")
-public class RoomModel {
+public class RoomModel implements Seeable {
 	private final long id;
 	private final String summary;
 	private final String description;

@@ -24,7 +24,7 @@ public class RoomTest {
     // then
     assertAll(
             () -> assertThat(wayout.getDirection()).isEqualTo(direction),
-            () -> assertThat(wayout.getRoom()).isEqualTo(room),
+            () -> assertThat(wayout.getRoomId()).isEqualTo(room.getId()),
             () -> assertThat(room.getSortedWayOuts()).containsOnlyOnce(wayout)
     );
   }
@@ -42,7 +42,7 @@ public class RoomTest {
     // then
     assertAll(
             () -> assertThat(room.getWayOutByDirection(Direction.EAST)).isNotEmpty(),
-            () -> assertThat(room.getWayOutByDirection(Direction.EAST).get().getNextRoom()).isEqualTo(nextRoom)
+            () -> assertThat(room.getWayOutByDirection(Direction.EAST).get().getNextRoomId()).isEqualTo(nextRoom.getId())
     );
   }
 }

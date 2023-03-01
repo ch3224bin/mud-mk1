@@ -6,9 +6,9 @@ import lombok.*;
 @Getter @AllArgsConstructor @Builder
 public class WayOut implements Comparable<WayOut> {
 	private long id;
-	private Room room;
+	private long roomId;
+	private long nextRoomId;
 	private Direction direction;
-	private Room nextRoom;
 	private Door door;
 	private boolean isShow = true;
 
@@ -23,10 +23,5 @@ public class WayOut implements Comparable<WayOut> {
 
 	public void installDoor(Door door) {
 		this.door = door;
-	}
-
-	public void linkAnotherRoom(Room anotherRoom, Direction yourWay) {
-		WayOut anotherWayOut = anotherRoom.createWayOut(this.room, yourWay);
-		Door.setup(this, anotherWayOut);
 	}
 }

@@ -17,6 +17,9 @@ public class WayOuts {
   }
 
   public List<WayOut> getSortedWayOuts() {
+    if (wayOuts.isEmpty()) {
+      return List.of();
+    }
     return wayOuts.stream()
       .sorted()
       .collect(Collectors.toList());

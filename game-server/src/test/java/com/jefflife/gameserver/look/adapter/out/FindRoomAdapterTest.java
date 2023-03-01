@@ -1,8 +1,11 @@
 package com.jefflife.gameserver.look.adapter.out;
 
-import com.jefflife.gameserver.map.adapter.out.persistence.QueryRoomAdapter;
-import com.jefflife.gameserver.map.domain.Room;
-import com.jefflife.gameserver.player.adapter.out.persistence.QueryPlayerAdapter;
+import com.jefflife.gameserver.map.adapter.out.persistence.LoadRoomAdapter;
+import com.jefflife.gameserver.map.application.port.in.LoadRoomQuery;
+import com.jefflife.gameserver.map.application.port.in.RoomModel;
+import com.jefflife.gameserver.map.application.service.RoomService;
+import com.jefflife.gameserver.player.adapter.out.persistence.LoadPlayerAdapter;
+import com.jefflife.gameserver.player.applicatoin.service.GetPlayerService;
 import com.jefflife.gameserver.shared.Seeable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,11 +17,11 @@ import org.springframework.test.context.jdbc.Sql;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@Import({QueryPlayerAdapter.class, QueryRoomAdapter.class, FindRoomAdapter.class})
+@Import({GetPlayerService.class, RoomService.class, LoadPlayerAdapter.class, LoadRoomAdapter.class, FindRoomAdapter.class})
 class FindRoomAdapterTest {
 
     @Autowired
-    private QueryRoomAdapter queryRoomAdapter;
+    private LoadRoomQuery loadRoomQuery;
     @Autowired
     private FindRoomAdapter findRoomAdapter;
 
@@ -27,7 +30,7 @@ class FindRoomAdapterTest {
     @Sql("classpath:LookSystemTest.sql")
     void findByPlayerId() {
         // given
-        Room expectedRoom = queryRoomAdapter.findById(1L);
+        RoomModel expectedRoom = loadRoomQuery.getRoom(1L);
 
         // when
         Seeable room = findRoomAdapter.findByPlayerId(1L);

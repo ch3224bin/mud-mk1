@@ -1,16 +1,16 @@
 package com.jefflife.gameserver.player.adapter.out.persistence;
 
-import com.jefflife.gameserver.player.applicatoin.port.out.QueryPlayerPort;
+import com.jefflife.gameserver.player.applicatoin.port.out.LoadPlayerPort;
 import com.jefflife.gameserver.player.domain.Player;
 import org.springframework.stereotype.Component;
 
 import java.util.NoSuchElementException;
 
 @Component
-public class QueryPlayerAdapter implements QueryPlayerPort {
+public class LoadPlayerAdapter implements LoadPlayerPort {
     private final PlayerRepository playerRepository;
 
-    public QueryPlayerAdapter(PlayerRepository playerRepository) {
+    public LoadPlayerAdapter(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
 
