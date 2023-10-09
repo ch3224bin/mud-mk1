@@ -4,7 +4,7 @@ import com.jefflife.gameserver.map.domain.Direction;
 import com.jefflife.gameserver.map.domain.WayOut;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity

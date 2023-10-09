@@ -5,7 +5,7 @@ import com.jefflife.gameserver.shared.SelfValidating;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CreateRoomCommand extends SelfValidating<CreateRoomCommand> {

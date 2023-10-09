@@ -4,7 +4,7 @@ import com.jefflife.gameserver.map.domain.Room;
 import lombok.*;
 import org.springframework.data.domain.Page;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

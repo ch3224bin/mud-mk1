@@ -3,7 +3,7 @@ package com.jefflife.gameserver.map.adapter.out.persistence.entity;
 import com.jefflife.gameserver.map.domain.AreaType;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity

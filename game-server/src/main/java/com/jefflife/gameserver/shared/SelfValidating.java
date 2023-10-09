@@ -1,6 +1,7 @@
 package com.jefflife.gameserver.shared;
 
-import javax.validation.*;
+import jakarta.validation.*;
+
 import java.util.Set;
 
 public abstract class SelfValidating<T> {

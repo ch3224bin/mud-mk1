@@ -5,7 +5,7 @@ import com.jefflife.gameserver.map.domain.AreaType;
 import com.jefflife.gameserver.shared.SelfValidating;
 import lombok.Getter;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Getter
 public class CreateAreaCommand extends SelfValidating<CreateAreaCommand> {
