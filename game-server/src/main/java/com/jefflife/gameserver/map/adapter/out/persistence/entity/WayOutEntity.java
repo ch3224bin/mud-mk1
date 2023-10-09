@@ -25,7 +25,7 @@ public class WayOutEntity {
 	@Column(name = "direction", nullable = false)
 	private Direction direction;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "next_room_id", nullable = false)
 	private RoomEntity nextRoom;
 
