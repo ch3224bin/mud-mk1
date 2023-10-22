@@ -1,2 +1,4 @@
 include 'front-api-server'
 include 'game-server'
+include 'common'
+
