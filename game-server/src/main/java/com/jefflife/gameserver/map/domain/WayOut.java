@@ -3,7 +3,7 @@ package com.jefflife.gameserver.map.domain;
 import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter @AllArgsConstructor @Builder
+@Getter
 public class WayOut implements Comparable<WayOut> {
 	private long id;
 	private long roomId;
@@ -11,6 +11,17 @@ public class WayOut implements Comparable<WayOut> {
 	private Direction direction;
 	private Door door;
 	private boolean isShow = true;
+
+
+	@Builder
+	public WayOut(long id, long roomId, long nextRoomId, Direction direction, Door door, boolean isShow) {
+		this.id = id;
+		this.roomId = roomId;
+		this.nextRoomId = nextRoomId;
+		this.direction = direction;
+		this.door = door;
+		this.isShow = isShow;
+	}
 
 	@Override
 	public int compareTo(WayOut o) {

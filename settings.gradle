@@ -1,4 +1,5 @@
+rootProject.name = 'mk1'
+include 'common'
 include 'front-api-server'
 include 'game-server'
-include 'common'
 
