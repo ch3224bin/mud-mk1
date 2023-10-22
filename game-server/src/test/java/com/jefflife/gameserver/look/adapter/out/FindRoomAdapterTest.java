@@ -6,7 +6,7 @@ import com.jefflife.gameserver.map.application.port.in.RoomModel;
 import com.jefflife.gameserver.map.application.service.RoomService;
 import com.jefflife.gameserver.player.adapter.out.persistence.LoadPlayerAdapter;
 import com.jefflife.gameserver.player.applicatoin.service.GetPlayerService;
-import com.jefflife.gameserver.shared.Seeable;
+import com.jefflife.gameserver.shared.VisibleObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ class FindRoomAdapterTest {
         RoomModel expectedRoom = loadRoomQuery.getRoom(1L);
 
         // when
-        Seeable room = findRoomAdapter.findByPlayerId(1L);
+        VisibleObject room = findRoomAdapter.findByPlayerId(1L);
 
         // then
         assertThat(room).isEqualTo(expectedRoom);

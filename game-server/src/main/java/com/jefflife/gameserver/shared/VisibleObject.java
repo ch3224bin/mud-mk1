@@ -1,4 +1,4 @@
 package com.jefflife.gameserver.shared;
 
-public interface Seeable {
+public interface VisibleObject {
 }

@@ -4,7 +4,7 @@ import com.jefflife.gameserver.look.application.port.out.FindRoomPort;
 import com.jefflife.gameserver.map.application.port.in.LoadRoomQuery;
 import com.jefflife.gameserver.player.applicatoin.port.in.LoadPlayerQuery;
 import com.jefflife.gameserver.player.domain.Player;
-import com.jefflife.gameserver.shared.Seeable;
+import com.jefflife.gameserver.shared.VisibleObject;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,7 +18,7 @@ public class FindRoomAdapter implements FindRoomPort {
     }
 
     @Override
-    public Seeable findByPlayerId(long playerId) {
+    public VisibleObject findByPlayerId(long playerId) {
         Player player = loadPlayerQuery.getPlayer(playerId);
         return loadRoomQuery.getRoom(player.getRoomId());
     }
