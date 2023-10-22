@@ -9,13 +9,13 @@ graph LR;
     front-api-server-->session-server;
     front-api-server-->game-server;
     game-server-->message-queue;
-    message-server-->message-queue;
-    client-->message-server;
+    front-api-server-->message-queue;
 ```
 
 ### front-api-server
 
-client에서 받는 명령어 처리
+- client에서 받은 명령어 해석를 game-server로 전달하고 결과를 client에 반환
+- message-queue를 구독하여 client에 메세지 전송
 
 ### game-server
 
