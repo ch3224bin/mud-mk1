@@ -2,9 +2,25 @@ package com.jefflife.gameserver.map.application.port.in;
 
 import com.jefflife.common.model.WayOutCommonModel;
 import com.jefflife.gameserver.map.domain.WayOut;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
-public class WayOutModel extends WayOutCommonModel {
+@Getter
+@EqualsAndHashCode(of = "id")
+public class WayOutModel implements WayOutCommonModel {
+	private final long id;
+	private final long roomId;
+	private final long nextRoomId;
+	private final String direction;
+	private final boolean isShow;
+	private final boolean isLocked;
+
 	public WayOutModel(WayOut wayout) {
-		super(wayout.getId(), wayout.getRoomId(), wayout.getNextRoomId(), wayout.getDirection().getName(), wayout.isShow(), wayout.getDoor().isLocked());
+		this.id = wayout.getId();
+		this.roomId = wayout.getRoomId();
+		this.nextRoomId = wayout.getNextRoomId();
+		this.direction = wayout.getDirection().getName();
+		this.isShow =  wayout.isShow();
+		this.isLocked = wayout.getDoor().isLocked();
 	}
 }
