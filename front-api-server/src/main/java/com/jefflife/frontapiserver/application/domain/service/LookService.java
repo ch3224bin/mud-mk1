@@ -1,4 +1,4 @@
-package com.jefflife.frontapiserver.application.service;
+package com.jefflife.frontapiserver.application.domain.service;
 
 import com.jefflife.frontapiserver.application.port.in.LookAtRoomUseCase;
 import com.jefflife.frontapiserver.application.port.out.FindRoomPort;
