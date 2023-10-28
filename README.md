@@ -2,6 +2,9 @@
 
 ## 구성
 
+- 머드게임의 특성에 맞게 Stateful 하게 구성함.
+- Scalable 하게 구성해 보았지만, 최대 사용자는 아직 계산해 보지 않음.
+
 ```mermaid
 graph LR;
     client-->front-api-server;
@@ -14,7 +17,7 @@ graph LR;
 
 ### front-api-server
 
-- client에서 받은 명령어 해석를 game-server로 전달하고 결과를 client에 반환
+- client에서 받은 명령어 해석하여 game-server로 전달하고 결과를 client에 반환
 - message-queue를 구독하여 client에 메세지 전송
 
 ### game-server
