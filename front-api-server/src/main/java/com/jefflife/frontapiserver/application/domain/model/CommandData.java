@@ -1,12 +1,13 @@
 package com.jefflife.frontapiserver.application.domain.model;
 
+import com.jefflife.common.model.CommandDataCommonModel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
 @EqualsAndHashCode
-public class CommandData {
+public class CommandData implements CommandDataCommonModel {
     private final String target;
     private final String payload;
     private final String adverb;
