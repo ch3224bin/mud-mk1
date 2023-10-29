@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "room")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter @AllArgsConstructor @Builder @EqualsAndHashCode(of = "id")
+@Getter @EqualsAndHashCode(of = "id")
 public class RoomEntity {
 
 	@Id
@@ -26,6 +26,14 @@ public class RoomEntity {
 
 	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<WayOutEntity> wayOuts = new ArrayList<>();
+
+	@Builder
+	public RoomEntity(long id, String summary, String description, List<WayOutEntity> wayOuts) {
+		this.id = id;
+		this.summary = summary;
+		this.description = description;
+		this.wayOuts = wayOuts;
+	}
 
 	public RoomEntity(Room room) {
 		this.id = room.getId();
