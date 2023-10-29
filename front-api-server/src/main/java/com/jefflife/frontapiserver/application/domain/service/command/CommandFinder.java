@@ -1,6 +1,6 @@
 package com.jefflife.frontapiserver.application.domain.service.command;
 
-import com.jefflife.frontapiserver.application.domain.model.CommandConstants;
+import com.jefflife.common.model.CommandConstants;
 import com.jefflife.frontapiserver.application.domain.model.CommandValue;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +20,7 @@ public class CommandFinder {
     }
 
     public Command find(CommandValue commandValue) {
-        CommandConstants commandConstants = CommandConstants.find(commandValue);
+        CommandConstants commandConstants = CommandConstants.find(commandValue.getLastWord());
         Command result = commandMap.get(commandConstants);
         if (result != null) {
             return result;

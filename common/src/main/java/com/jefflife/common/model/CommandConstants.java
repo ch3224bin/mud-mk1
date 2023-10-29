@@ -1,4 +1,4 @@
-package com.jefflife.frontapiserver.application.domain.model;
+package com.jefflife.common.model;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -32,14 +32,14 @@ public enum CommandConstants {
         this.commands = new HashSet<>(Arrays.asList(commands));
     }
 
-    public boolean matched(String command) {
+    public boolean matched(String action) {
         return commands.stream()
-                .anyMatch(c -> c.startsWith(command));
+                .anyMatch(c -> c.startsWith(action));
     }
 
-    public static CommandConstants find(CommandValue commandValue) {
+    public static CommandConstants find(String action) {
         return Arrays.stream(CommandConstants.values())
-                .filter(c -> c.matched(commandValue.getLastWord()))
+                .filter(c -> c.matched(action))
                 .findFirst()
                 .orElse(null);
     }
