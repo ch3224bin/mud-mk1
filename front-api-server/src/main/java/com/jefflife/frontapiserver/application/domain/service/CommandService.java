@@ -2,9 +2,9 @@ package com.jefflife.frontapiserver.application.domain.service;
 
 import com.jefflife.frontapiserver.application.domain.model.CommandResult;
 import com.jefflife.frontapiserver.application.domain.model.CommandValue;
-import com.jefflife.frontapiserver.application.domain.service.command.Command;
 import com.jefflife.frontapiserver.application.domain.service.command.CommandFinder;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 public class CommandService {
@@ -14,9 +14,10 @@ public class CommandService {
         this.commandFinder = commandFinder;
     }
 
-    public CommandResult execute(String commandText) {
-        CommandValue commandValue = CommandValue.of(commandText);
-        Command command = commandFinder.find(commandValue);
-        return command.execute(commandValue);
+    public Mono<CommandResult> execute(String commandText) {
+        return Mono.just(commandText)
+            .map(CommandValue::of)
+            .map(commandFinder::find)
+            .flatMap(command -> command.execute(CommandValue.of(commandText)));
     }
 }

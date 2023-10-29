@@ -1,25 +1,26 @@
 package com.jefflife.frontapiserver.application.domain.service.command;
 
 import com.jefflife.common.model.CommandConstants;
+import com.jefflife.frontapiserver.application.domain.model.CommandData;
 import com.jefflife.frontapiserver.application.domain.model.CommandResult;
 import com.jefflife.frontapiserver.application.domain.model.CommandValue;
-import com.jefflife.frontapiserver.application.port.out.FindRoomPort;
+import com.jefflife.frontapiserver.application.port.out.LookPort;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 @Component
 public class LookCommand implements Command {
-    private final FindRoomPort findRoomPort;
+    private final LookPort lookPort;
 
-    public LookCommand(FindRoomPort findRoomPort) {
-        this.findRoomPort = findRoomPort;
+    public LookCommand(LookPort lookPort) {
+        this.lookPort = lookPort;
     }
 
     @Override
-    public CommandResult execute(CommandValue commandValue) {
-        // 대상을 보고 어떤 것을 조회할지 판단 필요.
-        // 대상이 없으면 자신의 방을 조회한다.
-        // 대상이 있으면, 방 안의 물건, 내 소지품, PC, NPC 등 볼 수 있는 것들을 순서대로 찾아나간다.
-        return new CommandResult(null, null, null);
+    public Mono<CommandResult> execute(CommandValue commandValue) {
+        // TODO: CommandData로 파싱하기. 템플릿 아이디 정하기. 수신자 정하기.
+        return lookPort.look(1L, new CommandData("", "", "", ""))
+            .map(context -> new CommandResult(null, context, "1234"));
     }
 
     @Override

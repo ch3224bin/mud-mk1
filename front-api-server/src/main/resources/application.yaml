@@ -1,0 +1,7 @@
+app:
+  config:
+    adapter:
+      base-path:
+        game-server: http://localhost:8081
+      path:
+        look: /look
