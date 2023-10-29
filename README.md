@@ -13,6 +13,9 @@ graph LR;
     front-api-server-->game-server;
     game-server-->message-queue;
     front-api-server-->message-queue;
+    game-server-->cache;
+    db-update-server-->cache;
+    db-update-server-->db;
 ```
 
 ### front-api-server
