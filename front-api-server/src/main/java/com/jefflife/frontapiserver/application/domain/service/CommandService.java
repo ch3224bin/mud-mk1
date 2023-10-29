@@ -1,5 +1,6 @@
 package com.jefflife.frontapiserver.application.domain.service;
 
+import com.jefflife.frontapiserver.application.domain.model.CommandResult;
 import com.jefflife.frontapiserver.application.domain.model.CommandValue;
 import com.jefflife.frontapiserver.application.domain.service.command.Command;
 import com.jefflife.frontapiserver.application.domain.service.command.CommandFinder;
@@ -13,12 +14,9 @@ public class CommandService {
         this.commandFinder = commandFinder;
     }
 
-    public String execute(String commandText) {
-        // todo 반환타입 정의해야함.
+    public CommandResult execute(String commandText) {
         CommandValue commandValue = CommandValue.of(commandText);
         Command command = commandFinder.find(commandValue);
-        command.execute(commandValue);
-
-        return "command";
+        return command.execute(commandValue);
     }
 }
