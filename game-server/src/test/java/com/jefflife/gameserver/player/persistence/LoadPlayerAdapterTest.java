@@ -3,7 +3,7 @@ package com.jefflife.gameserver.player.persistence;
 import com.jefflife.gameserver.player.adapter.out.persistence.LoadPlayerAdapter;
 import com.jefflife.gameserver.player.adapter.out.persistence.PlayerRepository;
 import com.jefflife.gameserver.player.adapter.out.persistence.entity.PlayerEntity;
-import com.jefflife.gameserver.player.domain.Player;
+import com.jefflife.gameserver.player.applicatoin.domain.model.Player;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

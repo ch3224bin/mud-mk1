@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.map.application.port.in;
 
 import com.jefflife.common.model.WayOutCommonModel;
-import com.jefflife.gameserver.map.domain.WayOut;
+import com.jefflife.gameserver.map.application.domain.model.WayOut;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 

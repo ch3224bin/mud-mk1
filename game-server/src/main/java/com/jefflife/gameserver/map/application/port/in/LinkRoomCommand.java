@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.map.application.port.in;
 
-import com.jefflife.gameserver.map.domain.Direction;
+import com.jefflife.gameserver.map.application.domain.model.Direction;
 import com.jefflife.gameserver.shared.SelfValidating;
 import lombok.Getter;
 

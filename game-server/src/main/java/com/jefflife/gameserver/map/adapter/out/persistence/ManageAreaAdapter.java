@@ -2,7 +2,7 @@ package com.jefflife.gameserver.map.adapter.out.persistence;
 
 import com.jefflife.gameserver.map.adapter.out.persistence.entity.AreaEntity;
 import com.jefflife.gameserver.map.application.port.out.SaveAreaPort;
-import com.jefflife.gameserver.map.domain.Area;
+import com.jefflife.gameserver.map.application.domain.model.Area;
 import org.springframework.stereotype.Component;
 
 @Component

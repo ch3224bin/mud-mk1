@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.map.application.service;
+package com.jefflife.gameserver.map.application.domain.service;
 
 import com.jefflife.gameserver.map.application.port.in.CreateAreaCommand;
 import com.jefflife.gameserver.map.application.port.in.ManageAreaUseCase;

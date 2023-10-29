@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.map.application.port.in;
 
-import com.jefflife.gameserver.map.domain.Area;
-import com.jefflife.gameserver.map.domain.AreaType;
+import com.jefflife.gameserver.map.application.domain.model.Area;
+import com.jefflife.gameserver.map.application.domain.model.AreaType;
 import com.jefflife.gameserver.shared.SelfValidating;
 import lombok.Getter;
 

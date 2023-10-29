@@ -3,7 +3,7 @@ package com.jefflife.gameserver.map.adapter.out.persistence;
 import com.jefflife.gameserver.map.adapter.out.persistence.entity.RoomEntity;
 import com.jefflife.gameserver.map.application.port.out.LoadRoomPort;
 import com.jefflife.gameserver.map.application.port.out.SaveRoomPort;
-import com.jefflife.gameserver.map.domain.Room;
+import com.jefflife.gameserver.map.application.domain.model.Room;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;

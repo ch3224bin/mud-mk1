@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.map.adapter.out.persistence.entity;
 
-import com.jefflife.gameserver.map.domain.AreaType;
+import com.jefflife.gameserver.map.application.domain.model.AreaType;
 import lombok.*;
 
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.player.domain;
+package com.jefflife.gameserver.player.applicatoin.domain.model;
 
 import lombok.Getter;
 

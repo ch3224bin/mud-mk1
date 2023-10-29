@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.map.adapter.out.persistence.entity;
 
-import com.jefflife.gameserver.map.domain.Door;
+import com.jefflife.gameserver.map.application.domain.model.Door;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.map.application.port.in;
 
-import com.jefflife.gameserver.map.domain.Room;
+import com.jefflife.gameserver.map.application.domain.model.Room;
 import com.jefflife.gameserver.shared.SelfValidating;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

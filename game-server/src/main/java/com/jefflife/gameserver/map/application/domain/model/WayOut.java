@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.map.domain;
+package com.jefflife.gameserver.map.application.domain.model;
 
 import lombok.*;
 

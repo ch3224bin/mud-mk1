@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.map.adapter.out.persistence.entity;
 
-import com.jefflife.gameserver.map.domain.Direction;
-import com.jefflife.gameserver.map.domain.WayOut;
+import com.jefflife.gameserver.map.application.domain.model.Direction;
+import com.jefflife.gameserver.map.application.domain.model.WayOut;
 import lombok.*;
 
 import jakarta.persistence.*;

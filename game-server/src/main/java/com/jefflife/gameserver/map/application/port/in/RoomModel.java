@@ -2,7 +2,7 @@ package com.jefflife.gameserver.map.application.port.in;
 
 import com.jefflife.common.model.RoomCommonModel;
 import com.jefflife.common.model.WayOutCommonModel;
-import com.jefflife.gameserver.map.domain.Room;
+import com.jefflife.gameserver.map.application.domain.model.Room;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.hateoas.server.core.Relation;

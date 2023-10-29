@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.player.adapter.out.persistence;
 
 import com.jefflife.gameserver.player.applicatoin.port.out.LoadPlayerPort;
-import com.jefflife.gameserver.player.domain.Player;
+import com.jefflife.gameserver.player.applicatoin.domain.model.Player;
 import org.springframework.stereotype.Component;
 
 import java.util.NoSuchElementException;

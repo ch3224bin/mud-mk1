@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.map.application.port.out;
 
-import com.jefflife.gameserver.map.domain.Room;
+import com.jefflife.gameserver.map.application.domain.model.Room;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

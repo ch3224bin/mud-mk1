@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.map.adapter.out.persistence.entity;
 
-import com.jefflife.gameserver.map.domain.Room;
+import com.jefflife.gameserver.map.application.domain.model.Room;
 import lombok.*;
 import org.springframework.data.domain.Page;
 
