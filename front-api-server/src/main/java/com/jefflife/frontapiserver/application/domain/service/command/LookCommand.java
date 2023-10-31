@@ -20,11 +20,10 @@ public class LookCommand implements Command {
 
     @Override
     public Mono<CommandResult> execute(CommandValue commandValue) {
-        // TODO: 템플릿 아이디 정하기. 수신자 정하기.
-        // 템플릿의 아이디는 payload 타입에 따라 결정됨. 고정이 아님.
+        // TODO: 수신자 정하기. 현재 플레이어 ID 구하기. 수신자와 현재 플레이어는 세션 서버나 웹소켓 등 구현하고 진행.
         CommandData commandData = lookCommandDataParser.parse(commandValue);
         return lookPort.look(1L, commandData)
-            .map(context -> new CommandResult(null, context, "1234"));
+            .map(context -> new CommandResult(null, context));
     }
 
     @Override

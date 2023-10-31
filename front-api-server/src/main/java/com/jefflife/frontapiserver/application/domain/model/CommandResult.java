@@ -8,11 +8,9 @@ import java.util.List;
 public class CommandResult {
     private final List<String> receivers;
     private final Object payload;
-    private final String templateId;
 
-    public CommandResult(List<String> receivers, Object payload, String templateId) {
+    public CommandResult(List<String> receivers, Object payload) {
         this.receivers = receivers;
         this.payload = payload;
-        this.templateId = templateId;
     }
 }
