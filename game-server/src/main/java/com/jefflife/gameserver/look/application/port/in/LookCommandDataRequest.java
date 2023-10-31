@@ -6,14 +6,14 @@ import lombok.Getter;
 @Getter
 public class LookCommandDataRequest implements CommandDataCommonModel {
     private final String target;
-    private final String payload;
+    private final String content;
     private final String adverb;
     private final String action;
 
     public LookCommandDataRequest(CommandDataCommonModel commandData, LookCommandDataRequestValidator validator) {
         validator.validate(commandData);
         this.target = commandData.getTarget();
-        this.payload = commandData.getPayload();
+        this.content = commandData.getContent();
         this.adverb = commandData.getAdverb();
         this.action = commandData.getAction();
     }

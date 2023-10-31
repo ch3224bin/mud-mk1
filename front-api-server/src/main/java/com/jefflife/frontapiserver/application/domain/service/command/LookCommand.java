@@ -11,15 +11,19 @@ import reactor.core.publisher.Mono;
 @Component
 public class LookCommand implements Command {
     private final LookPort lookPort;
+    private final CommandDataParser lookCommandDataParser;
 
-    public LookCommand(LookPort lookPort) {
+    public LookCommand(LookPort lookPort, CommandDataParser lookCommandDataParser) {
         this.lookPort = lookPort;
+        this.lookCommandDataParser = lookCommandDataParser;
     }
 
     @Override
     public Mono<CommandResult> execute(CommandValue commandValue) {
-        // TODO: CommandData로 파싱하기. 템플릿 아이디 정하기. 수신자 정하기.
-        return lookPort.look(1L, new CommandData("", "", "", ""))
+        // TODO: 템플릿 아이디 정하기. 수신자 정하기.
+        // 템플릿의 아이디는 payload 타입에 따라 결정됨. 고정이 아님.
+        CommandData commandData = lookCommandDataParser.parse(commandValue);
+        return lookPort.look(1L, commandData)
             .map(context -> new CommandResult(null, context, "1234"));
     }
 

@@ -9,14 +9,14 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class CommandData implements CommandDataCommonModel {
     private final String target;
-    private final String payload;
+    private final String content;
     private final String adverb;
     private final String action;
 
     @Builder
-    public CommandData(String target, String payload, String adverb, String action) {
+    public CommandData(String target, String content, String adverb, String action) {
         this.target = target;
-        this.payload = payload;
+        this.content = content;
         this.adverb = adverb;
         this.action = action;
     }

@@ -6,11 +6,11 @@ import org.apache.commons.lang3.StringUtils;
 @Getter
 public class CommandValue {
     private final String commandText;
-    private final String lastWord;
+    private final String[] words;
 
-    private CommandValue(String commandText, String lastWord) {
+    private CommandValue(String commandText, String[] words) {
         this.commandText = commandText;
-        this.lastWord = lastWord;
+        this.words = words;
     }
 
     public static CommandValue of(String commandText) {
@@ -19,10 +19,14 @@ public class CommandValue {
         }
         String strippedCommand = StringUtils.stripToEmpty(commandText);
         String[] words = strippedCommand.split(" ");
-        if (words.length == 1) {
-            return new CommandValue(commandText, words[0]);
-        }
-        String lastWord = words[words.length - 1];
-        return new CommandValue(commandText, lastWord);
+        return new CommandValue(commandText, words);
+    }
+
+    public int getWordCount() {
+        return words.length;
+    }
+
+    public String getLastWord() {
+        return words[words.length - 1];
     }
 }

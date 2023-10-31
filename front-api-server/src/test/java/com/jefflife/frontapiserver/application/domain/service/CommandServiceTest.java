@@ -6,6 +6,7 @@ import com.jefflife.frontapiserver.application.domain.model.CommandResult;
 import com.jefflife.frontapiserver.application.domain.service.command.Command;
 import com.jefflife.frontapiserver.application.domain.service.command.CommandFinder;
 import com.jefflife.frontapiserver.application.domain.service.command.LookCommand;
+import com.jefflife.frontapiserver.application.domain.service.command.LookCommandDataParser;
 import com.jefflife.frontapiserver.application.port.out.LookPort;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
@@ -22,7 +23,7 @@ class CommandServiceTest {
         // given
         final RoomCommonModel roomModel = getRoomCommonModel();
         LookPort lookPort = (playerId, commandData) -> Mono.just(roomModel);
-        List<Command> commands = List.of(new LookCommand(lookPort));
+        List<Command> commands = List.of(new LookCommand(lookPort, new LookCommandDataParser()));
         CommandFinder commandFinder = new CommandFinder(commands);
         CommandService commandService = new CommandService(commandFinder);
 

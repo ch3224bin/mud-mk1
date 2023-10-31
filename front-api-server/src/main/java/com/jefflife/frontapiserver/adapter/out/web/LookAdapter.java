@@ -34,7 +34,7 @@ public class LookAdapter implements LookPort {
                 .uri(lookPath)
                 .attribute("playerId", playerId)
                 .attribute("target", commandData.getTarget())
-                .attribute("payload", commandData.getPayload())
+                .attribute("payload", commandData.getContent())
                 .attribute("adverb", commandData.getAdverb())
                 .attribute("action", commandData.getAction())
                 .retrieve()
