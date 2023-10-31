@@ -1,0 +1,15 @@
+<room>
+    <div class="summary">-= {{summary}} =-</div>
+    <div class="description">{{{description}}}</div>
+    <div class="exit">출구 : [{{exitString}}]</div>
+    <ul class="players">
+        {{#players}}
+            <li><span class="player">{{name}}</span>이(가) 서있습니다.</li>
+        {{/players}}
+    </ul>
+    <ul class="items">
+        {{#items}}
+            <li><span class="item {{grade}}">{{name}}</span>{{#isLocked}}<span class="locked">(잠김)</span>{{/isLocked}}이(가) 놓여있습니다.</li>
+        {{/items}}
+    </ul>
+</room>

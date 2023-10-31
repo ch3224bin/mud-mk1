@@ -22,7 +22,7 @@ public class CommandWebSocketHandler implements WebSocketHandler {
         // TODO : 메세지 구독을 같이 처리하고 싶다..
         Flux<WebSocketMessage> socketMessageFlux = session.receive()
                 .flatMap(msg -> commandExecutor.execute(msg.getPayloadAsText()))
-                .map(commandResult -> htmlConverter.convert(commandResult))
+                .flatMap(commandResult -> htmlConverter.convert(commandResult))
                 .map(htmlResult -> session.textMessage(htmlResult.getHtml()));
         return session.send(socketMessageFlux);
     }

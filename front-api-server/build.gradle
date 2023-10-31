@@ -25,6 +25,7 @@ dependencies {
     implementation project(':common')
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-integration'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
     implementation 'org.springframework.session:spring-session-core'
     implementation 'org.apache.commons:commons-lang3:3.13.0'
     compileOnly 'org.projectlombok:lombok'
