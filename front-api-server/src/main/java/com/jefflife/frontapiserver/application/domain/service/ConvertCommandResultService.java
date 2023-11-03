@@ -20,7 +20,7 @@ public class ConvertCommandResultService implements HtmlConverter {
 
     @Override
     public Mono<HtmlResult> convert(CommandResult commandResult) {
-        return Mono.fromCallable(() -> templateNameResolver.resolve(commandResult.getPayload()))
+        return templateNameResolver.resolve(commandResult.getPayload())
                 .flatMap(templateName -> htmlCompilePort.compile(templateName, commandResult.getPayload()));
     }
 }
