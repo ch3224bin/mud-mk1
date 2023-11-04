@@ -22,8 +22,8 @@ public class LookController {
     }
 
     @GetMapping
-    public ResponseEntity<VisibleObject> look(@RequestParam("playerId") long playerId, CommandDataCommonModel commandData) {
+    public ResponseEntity<LookResult> look(@RequestParam("playerId") long playerId, CommandDataCommonModel commandData) {
         VisibleObject visibleObject = lookQuery.look(playerId, new LookCommandDataRequest(commandData, LookCommandDataRequestValidator.getInstance()));
-        return ResponseEntity.ok(visibleObject);
+        return ResponseEntity.ok(LookResult.of(visibleObject));
     }
 }
