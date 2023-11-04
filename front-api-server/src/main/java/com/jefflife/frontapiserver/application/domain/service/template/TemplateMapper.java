@@ -3,7 +3,8 @@ package com.jefflife.frontapiserver.application.domain.service.template;
 import com.jefflife.common.model.RoomCommonModel;
 
 public enum TemplateMapper {
-    ROOM("room", RoomCommonModel.class);
+    ROOM("room", RoomCommonModel.class),
+    ERROR("room", ErrorMessageModel.class);
 
     private final String templateName;
     private final Class<?> payloadType;

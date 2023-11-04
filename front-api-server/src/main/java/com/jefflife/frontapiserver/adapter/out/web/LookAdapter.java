@@ -30,13 +30,16 @@ public class LookAdapter implements LookPort {
 
     @Override
     public Mono<VisibleObject> look(long playerId, CommandData commandData) {
+        // TODO : VisibleObject로는 json 파싱을 못함...
+        // TODO : 에러 처리 필요
         return webClient.get()
-                .uri(lookPath)
-                .attribute("playerId", playerId)
-                .attribute("target", commandData.getTarget())
-                .attribute("payload", commandData.getContent())
-                .attribute("adverb", commandData.getAdverb())
-                .attribute("action", commandData.getAction())
+                .uri(uriBuilder -> uriBuilder.path(lookPath)
+                        .queryParam("playerId", playerId)
+                        .queryParam("target", commandData.getTarget())
+                        .queryParam("payload", commandData.getContent())
+                        .queryParam("adverb", commandData.getAdverb())
+                        .queryParam("action", commandData.getAction())
+                        .build())
                 .retrieve()
                 .bodyToMono(VisibleObject.class);
     }

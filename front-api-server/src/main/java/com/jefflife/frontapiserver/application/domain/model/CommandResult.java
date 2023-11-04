@@ -1,5 +1,6 @@
 package com.jefflife.frontapiserver.application.domain.model;
 
+import com.jefflife.common.model.VisibleObject;
 import lombok.Getter;
 
 import java.util.List;
@@ -7,9 +8,9 @@ import java.util.List;
 @Getter
 public class CommandResult {
     private final List<String> receivers;
-    private final Object payload;
+    private final VisibleObject payload;
 
-    public CommandResult(List<String> receivers, Object payload) {
+    public CommandResult(List<String> receivers, VisibleObject payload) {
         this.receivers = receivers;
         this.payload = payload;
     }
