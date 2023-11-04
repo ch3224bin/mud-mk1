@@ -12,19 +12,27 @@ import java.util.concurrent.CompletableFuture;
 @Component
 public class MustacheHtmlCompiler implements HtmlCompilePort {
     private final Mustache.Compiler mustacheCompiler;
+    private final Mustache.TemplateLoader templateLoader;
     private final ThreadPoolTaskExecutor templateEngineTaskExecutor;
 
-    public MustacheHtmlCompiler(Mustache.Compiler mustacheCompiler, ThreadPoolTaskExecutor templateEngineTaskExecutor) {
+    public MustacheHtmlCompiler(Mustache.Compiler mustacheCompiler, Mustache.TemplateLoader templateLoader, ThreadPoolTaskExecutor templateEngineTaskExecutor) {
         this.mustacheCompiler = mustacheCompiler;
+        this.templateLoader = templateLoader;
         this.templateEngineTaskExecutor = templateEngineTaskExecutor;
     }
 
     @Override
     public Mono<HtmlResult> compile(String templateName, Object context) {
         return Mono.fromFuture(
-                CompletableFuture.supplyAsync(() -> mustacheCompiler
-                        .compile(templateName)
-                        .execute(context), templateEngineTaskExecutor))
+                CompletableFuture.supplyAsync(() -> {
+                    try {
+                        return mustacheCompiler
+                                .compile(templateLoader.getTemplate(templateName))
+                                .execute(context);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }, templateEngineTaskExecutor))
                 .map(HtmlResult::new);
     }
 }

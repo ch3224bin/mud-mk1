@@ -9,7 +9,7 @@
     </ul>
     <ul class="items">
         {{#items}}
-            <li><span class="item {{grade}}">{{name}}</span>{{#isLocked}}<span class="locked">(잠김)</span>{{/isLocked}}이(가) 놓여있습니다.</li>
+            <li><span class="item {{grade}}">{{name}}</span>{{#locked}}<span class="locked">(잠김)</span>{{/locked}}이(가) 놓여있습니다.</li>
         {{/items}}
     </ul>
 </room>
