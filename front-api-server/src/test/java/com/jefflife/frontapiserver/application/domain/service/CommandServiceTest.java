@@ -44,31 +44,6 @@ class CommandServiceTest {
     }
 
     private static RoomCommonModel getRoomCommonModel() {
-        return new RoomCommonModel() {
-            @Override
-            public long getId() {
-                return 1L;
-            }
-
-            @Override
-            public String getSummary() {
-                return "test";
-            }
-
-            @Override
-            public String getDescription() {
-                return "test";
-            }
-
-            @Override
-            public List<WayOutCommonModel> getWayOuts() {
-                return null;
-            }
-
-            @Override
-            public String getExitString() {
-                return null;
-            }
-        };
+        return new RoomCommonModel(1L, "test", "test", null, null);
     }
 }
