@@ -1,5 +1,6 @@
 package com.jefflife.gameserver.player.adapter.in.web;
 
+import com.jefflife.common.model.PlayerCommonModel;
 import com.jefflife.gameserver.player.applicatoin.port.in.LoadPlayerQuery;
 import com.jefflife.gameserver.player.applicatoin.domain.model.Player;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public Player getPlayer(@PathVariable("id") long id) {
+    public PlayerCommonModel getPlayer(@PathVariable("id") long id) {
         return loadPlayerQuery.getPlayer(id);
     }
 }
