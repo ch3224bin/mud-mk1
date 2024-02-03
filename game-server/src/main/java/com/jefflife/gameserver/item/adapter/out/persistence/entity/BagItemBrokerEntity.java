@@ -1,14 +1,12 @@
 package com.jefflife.gameserver.item.adapter.out.persistence.entity;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "bag_item_broker")
 @DiscriminatorValue("bag")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter

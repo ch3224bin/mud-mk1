@@ -22,4 +22,10 @@ public class ItemService implements LoadItemQuery {
         List<Item> item = loadItemPort.findByName(name);
         return ItemModel.of(item);
     }
+
+    @Override
+    public List<ItemModel> findByFloorId(long floorId) {
+        List<Item> item = loadItemPort.findByFloorId(floorId);
+        return ItemModel.of(item);
+    }
 }

@@ -27,12 +27,16 @@ public class RoomEntity {
 	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<WayOutEntity> wayOuts = new ArrayList<>();
 
+	@Column(name = "floor_id", nullable = false)
+	private long floorId;
+
 	@Builder
-	public RoomEntity(long id, String summary, String description, List<WayOutEntity> wayOuts) {
+	public RoomEntity(long id, String summary, String description, List<WayOutEntity> wayOuts, long floorId) {
 		this.id = id;
 		this.summary = summary;
 		this.description = description;
 		this.wayOuts = wayOuts;
+		this.floorId = floorId;
 	}
 
 	public RoomEntity(Room room) {
