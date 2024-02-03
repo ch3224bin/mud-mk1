@@ -44,6 +44,6 @@ class CommandServiceTest {
     }
 
     private static RoomCommonModel getRoomCommonModel() {
-        return new RoomCommonModel(1L, "test", "test", null, null);
+        return new RoomCommonModel(1L, "test", "test", null, null, 1L);
     }
 }

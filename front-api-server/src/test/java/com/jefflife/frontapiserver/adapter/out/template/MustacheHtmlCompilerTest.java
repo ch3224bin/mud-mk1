@@ -22,7 +22,7 @@ class MustacheHtmlCompilerTest {
     @Test
     void name() {
         // given
-        RoomCommonModel room = new RoomCommonModel(1L, "test", "test", Collections.emptyList(), "출구");
+        RoomCommonModel room = new RoomCommonModel(1L, "test", "test", Collections.emptyList(), "출구", 1L);
 
         // when
         Mono<HtmlResult> resultMono = mustacheHtmlCompiler.compile("RoomModel", room);

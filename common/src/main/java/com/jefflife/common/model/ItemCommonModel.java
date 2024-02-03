@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ItemCommonModel {
+public class ItemCommonModel implements VisibleObject {
     private long id;
     private String name;
     private String description;
