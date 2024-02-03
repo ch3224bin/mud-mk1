@@ -54,7 +54,8 @@ public class RoomEntity {
 				id,
 				summary,
 				description,
-				WayOutEntity.toDomainList(wayOuts)
+				WayOutEntity.toDomainList(wayOuts),
+				floorId
 		);
 	}
 }

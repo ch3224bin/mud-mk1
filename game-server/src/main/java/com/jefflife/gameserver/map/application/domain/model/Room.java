@@ -11,29 +11,31 @@ public class Room {
 	@Getter private final Long id;
 	@Getter private String summary;
 	@Getter private String description;
+	@Getter private long floorId;
 	private final WayOuts wayOuts;
 
-	private Room(Long id, String summary, String description, List<WayOut> wayOuts) {
-		this(id, summary, description, new WayOuts(wayOuts));
+	private Room(Long id, String summary, String description, List<WayOut> wayOuts, long floorId) {
+		this(id, summary, description, new WayOuts(wayOuts), floorId);
 	}
 
-	private Room(Long id, String summary, String description, WayOuts wayOuts) {
+	private Room(Long id, String summary, String description, WayOuts wayOuts, long floorId) {
 		this.id = id;
 		this.summary = summary;
 		this.description = description;
 		this.wayOuts = wayOuts;
+		this.floorId = floorId;
 	}
 
-	public static Room of(Long id, String summary, String description, List<WayOut> wayOuts) {
-		return new Room(id, summary, description, wayOuts);
+	public static Room of(long id, String summary, String description, List<WayOut> wayOuts, long floorId) {
+		return new Room(id, summary, description, wayOuts, floorId);
 	}
 
-	public static Room withOutWayOuts(Long id, String summary, String description) {
-		return new Room(id, summary, description, new WayOuts());
+	public static Room withOutWayOuts(long id, String summary, String description) {
+		return new Room(id, summary, description, new WayOuts(), 0L);
 	}
 
 	public static Room withOutId(String summary, String description) {
-		return new Room(null, summary, description, new WayOuts());
+		return new Room(null, summary, description, new WayOuts(), 0L);
 	}
 
 	public List<WayOut> getSortedWayOuts() {

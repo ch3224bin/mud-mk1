@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Relation(collectionRelation = "rooms", itemRelation = "room")
 public class RoomModel extends RoomCommonModel {
 	public RoomModel(Room room) {
-		super(room.getId(), room.getSummary(), room.getDescription(), getSortedWayOuts(room), room.getExitString());
+		super(room.getId(), room.getSummary(), room.getDescription(), getSortedWayOuts(room), room.getExitString(), room.getFloorId());
 	}
 
 	private static List<WayOutCommonModel> getSortedWayOuts(Room room) {

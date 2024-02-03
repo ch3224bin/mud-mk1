@@ -1,5 +1,6 @@
 package com.jefflife.gameserver.look.adapter.out;
 
+import com.jefflife.common.model.PlayerCommonModel;
 import com.jefflife.common.model.RoomCommonModel;
 import com.jefflife.gameserver.look.application.port.out.FindRoomPort;
 import com.jefflife.gameserver.map.application.port.in.LoadRoomQuery;
@@ -19,7 +20,7 @@ public class FindRoomAdapter implements FindRoomPort {
 
     @Override
     public RoomCommonModel findByPlayerId(long playerId) {
-        Player player = loadPlayerQuery.getPlayer(playerId);
+        PlayerCommonModel player = loadPlayerQuery.getPlayer(playerId);
         return loadRoomQuery.getRoom(player.getRoomId());
     }
 }

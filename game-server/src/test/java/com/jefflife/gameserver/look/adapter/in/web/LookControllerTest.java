@@ -1,8 +1,5 @@
 package com.jefflife.gameserver.look.adapter.in.web;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jefflife.gameserver.look.application.port.in.LookQuery;
 import com.jefflife.gameserver.map.application.domain.model.Room;
 import com.jefflife.gameserver.map.application.port.in.RoomModel;
@@ -12,17 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = {LookController.class})
@@ -38,11 +32,11 @@ class LookControllerTest {
     @Test
     void testJustSee() throws Exception {
         // given
-        RoomModel roomModel = new RoomModel(Room.of(1L, "test", "test", Collections.emptyList()));
+        RoomModel roomModel = new RoomModel(Room.of(1L, "test", "test", Collections.emptyList(), 0L));
         given(lookQuery.look(eq(1L), any())).willReturn(roomModel);
 
-        // when
-        MvcResult mvcResult = mockMvc.perform(
+        // when then
+        mockMvc.perform(
                         get("/look")
                                 .queryParam("playerId", "1")
                                 .queryParam("target", "")
@@ -51,19 +45,10 @@ class LookControllerTest {
                                 .queryParam("action", "봐")
                 )
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.className").value("RoomModel"))
+                .andExpect(jsonPath("$.payload.id").value(roomModel.getId()))
+                .andExpect(jsonPath("$.payload.summary").value(roomModel.getSummary()))
+                .andExpect(jsonPath("$.payload.description").value(roomModel.getDescription()))
                 .andReturn();
-
-        // then
-        JsonNode rootNode = getJsonNode(mvcResult);
-        assertAll(
-                () -> assertThat(rootNode.get("id").asLong()).isEqualTo(roomModel.getId()),
-                () -> assertThat(rootNode.get("summary").asText()).isEqualTo(roomModel.getSummary()),
-                () -> assertThat(rootNode.get("description").asText()).isEqualTo(roomModel.getDescription())
-        );
-    }
-
-    private static JsonNode getJsonNode(MvcResult mvcResult) throws JsonProcessingException, UnsupportedEncodingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readTree(mvcResult.getResponse().getContentAsString());
     }
 }

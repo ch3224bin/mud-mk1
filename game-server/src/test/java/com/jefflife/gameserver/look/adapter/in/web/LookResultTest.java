@@ -13,7 +13,7 @@ class LookResultTest {
     @Test
     void name() {
         // given
-        VisibleObject visibleObject = new RoomModel(Room.of(1L, "", "", Collections.emptyList()));
+        VisibleObject visibleObject = new RoomModel(Room.of(1L, "", "", Collections.emptyList(), 0L));
 
         // when
         LookResult lookResult = LookResult.of(visibleObject);
