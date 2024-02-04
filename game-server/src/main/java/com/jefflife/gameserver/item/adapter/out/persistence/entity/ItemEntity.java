@@ -2,6 +2,7 @@ package com.jefflife.gameserver.item.adapter.out.persistence.entity;
 
 import com.jefflife.gameserver.item.application.domain.model.Item;
 import com.jefflife.gameserver.item.application.domain.model.ItemGrade;
+import com.jefflife.gameserver.item.application.domain.model.ItemType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -26,6 +27,9 @@ public class ItemEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "grade", nullable = false)
     private ItemGrade grade;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false)
+    private ItemType type;
 
     public Item toDomain() {
         return new Item(id, name, description, isGettable, grade);

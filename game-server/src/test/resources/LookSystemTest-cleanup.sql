@@ -1,0 +1,12 @@
+SET REFERENTIAL_INTEGRITY FALSE;
+truncate table floor_item_broker;
+truncate table item_broker;
+truncate table item;
+truncate table player;
+truncate table way_out;
+truncate table door;
+truncate table area_room;
+truncate table room;
+truncate table area;
+truncate table floor;
+SET REFERENTIAL_INTEGRITY TRUE;

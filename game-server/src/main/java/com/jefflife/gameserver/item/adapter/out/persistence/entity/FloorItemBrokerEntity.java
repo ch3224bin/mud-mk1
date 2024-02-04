@@ -1,17 +1,17 @@
 package com.jefflife.gameserver.item.adapter.out.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "floor_item_broker")
+@DiscriminatorValue("floor")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class FloorItemBrokerEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @OneToOne
-    @JoinColumn(name = "item_id", nullable = false, unique = true, updatable = false)
-    private ItemEntity item;
+public class FloorItemBrokerEntity extends ItemBrokerEntity {
+    @ManyToOne
+    @JoinColumn(name = "floor_id", nullable = false)
+    private FloorEntity floor;
 }
