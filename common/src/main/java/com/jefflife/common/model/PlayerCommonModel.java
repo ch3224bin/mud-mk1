@@ -3,7 +3,7 @@ package com.jefflife.common.model;
 import lombok.Getter;
 
 @Getter
-public class PlayerCommonModel {
+public class PlayerCommonModel implements VisibleObject {
     private final long id;
     private final long roomId;
     private final String name;
