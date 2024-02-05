@@ -93,4 +93,28 @@ public class LookSystemTest {
             .body("payload.name", equalTo(target))
             .body("payload.description", equalTo("검은색 메탈 재질의 손잡이가 있는 LCD 손전등이다."));
     }
+
+    @DisplayName("액션가면 봐 => 같은 방안에 있는 플레이어 액션가면을 보여준다")
+    @Test
+    @Sql(scripts = "classpath:LookSystemTest-setup.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:LookSystemTest-cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    void testSeeThePlayerInTheRoom() {
+        // given
+        String playerId = "1";
+        String target = "액션가면";
+        String action = "봐";
+
+        // when
+        given()
+            .header("Content-Type", "application/json")
+            .queryParam("playerId", playerId)
+            .queryParam("target", target)
+            .queryParam("action", action)
+        .when()
+            .get("/look")
+        .then()
+            .statusCode(200)
+            .body("payload.id", equalTo(2))
+            .body("payload.name", equalTo(target));
+    }
 }

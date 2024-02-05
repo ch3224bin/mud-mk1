@@ -36,10 +36,11 @@ insert into floor (id) values
 (5);
 
 insert into bag (id) values
-(1);
+(1), (2);
 
 insert into player (id, name, room_id, bag_id) values
-(1, '테스트 플레이어', 1, 1);
+(1, '테스트 플레이어', 1, 1),
+(2, '액션가면', 1, 2);
 
 insert into item (id, name, description, is_gettable, grade, type) values
 (1, '돌멩이', '주먹만하고 흙이 묻어 있는 돌멩이이다.', true, 'COMMON', 'ETC'),

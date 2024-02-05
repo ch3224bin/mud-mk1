@@ -1,25 +1,22 @@
 package com.jefflife.gameserver.look.application.domain.service.finder;
 
-import com.jefflife.common.model.ItemsCommonModel;
 import com.jefflife.common.model.PlayerCommonModel;
 import com.jefflife.common.model.VisibleObject;
 import com.jefflife.gameserver.look.application.port.in.LookCommandDataRequest;
-import com.jefflife.gameserver.look.application.port.out.FindItemPort;
 import com.jefflife.gameserver.look.application.port.out.FindPlayerPort;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
-@Order(2)
-public class BagFinder implements Finder {
+@Order(3)
+public class PlayerFinder implements Finder {
     private final FindPlayerPort findPlayerPort;
-    private final FindItemPort findItemPort;
 
-    public BagFinder(FindPlayerPort findPlayerPort, FindItemPort findItemPort) {
+    public PlayerFinder(FindPlayerPort findPlayerPort) {
         this.findPlayerPort = findPlayerPort;
-        this.findItemPort = findItemPort;
     }
 
     @Override
@@ -29,7 +26,9 @@ public class BagFinder implements Finder {
         }
 
         PlayerCommonModel player = findPlayerPort.findPlayerById(playerId);
-        ItemsCommonModel items = findItemPort.findByBagId(player.getBagId());
-        return items.findFirstByNameLike(commandData.getTarget());
+        List<PlayerCommonModel> players = findPlayerPort.findByRoomId(player.getRoomId());
+        return players.stream()
+                .filter(p -> p.getName().contains(commandData.getTarget()))
+                .findFirst();
     }
 }
