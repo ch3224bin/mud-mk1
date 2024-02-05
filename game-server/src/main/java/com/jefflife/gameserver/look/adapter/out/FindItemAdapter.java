@@ -26,7 +26,10 @@ public class FindItemAdapter implements FindItemPort {
     }
 
     @Override
-    public ItemsCommonModel findByPlayerId(long playerId) {
-        return null;
+    public ItemsCommonModel findByBagId(long bagId) {
+        List<ItemModel> items = loadItemQuery.findByBagId(bagId);
+        return ItemsCommonModel.of(items.stream()
+                .map(item -> (ItemCommonModel) item)
+                .toList());
     }
 }

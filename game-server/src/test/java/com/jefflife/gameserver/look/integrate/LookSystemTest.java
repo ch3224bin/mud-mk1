@@ -56,16 +56,41 @@ public class LookSystemTest {
 
         // when
         given()
-                .header("Content-Type", "application/json")
-                .queryParam("playerId", playerId)
-                .queryParam("target", target)
-                .queryParam("action", action)
-                .when()
+            .header("Content-Type", "application/json")
+            .queryParam("playerId", playerId)
+            .queryParam("target", target)
+            .queryParam("action", action)
+        .when()
+            .get("/look")
+        .then()
+            .statusCode(200)
+            .body("payload.id", equalTo(1))
+            .body("payload.name", equalTo(target))
+            .body("payload.description", equalTo("주먹만하고 흙이 묻어 있는 돌멩이이다."));
+    }
+
+    @DisplayName("손전등 봐 => 내 가방안의 손전등을 보여준다")
+    @Test
+    @Sql(scripts = "classpath:LookSystemTest-setup.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:LookSystemTest-cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    void testSeeTheItemInTheBag() {
+        // given
+        String playerId = "1";
+        String target = "손전등";
+        String action = "봐";
+
+        // when
+        given()
+            .header("Content-Type", "application/json")
+            .queryParam("playerId", playerId)
+            .queryParam("target", target)
+            .queryParam("action", action)
+        .when()
                 .get("/look")
-                .then()
-                .statusCode(200)
-                .body("payload.id", equalTo(1))
-                .body("payload.name", equalTo(target))
-                .body("payload.description", equalTo("주먹만하고 흙이 묻어 있는 돌멩이이다."));
+        .then()
+            .statusCode(200)
+            .body("payload.id", equalTo(2))
+            .body("payload.name", equalTo(target))
+            .body("payload.description", equalTo("검은색 메탈 재질의 손잡이가 있는 LCD 손전등이다."));
     }
 }

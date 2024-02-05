@@ -4,5 +4,5 @@ import com.jefflife.common.model.ItemsCommonModel;
 
 public interface FindItemPort {
     ItemsCommonModel findByFloorId(long floorId);
-    ItemsCommonModel findByPlayerId(long playerId);
+    ItemsCommonModel findByBagId(long bagId);
 }

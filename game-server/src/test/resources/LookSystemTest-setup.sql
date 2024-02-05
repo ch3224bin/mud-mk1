@@ -35,14 +35,22 @@ insert into floor (id) values
 (4),
 (5);
 
-insert into player (id, name, room_id) values
-(1, '테스트 플레이어', 1);
+insert into bag (id) values
+(1);
+
+insert into player (id, name, room_id, bag_id) values
+(1, '테스트 플레이어', 1, 1);
 
 insert into item (id, name, description, is_gettable, grade, type) values
-(1, '돌멩이', '주먹만하고 흙이 묻어 있는 돌멩이이다.', true, 'COMMON', 'ETC');
+(1, '돌멩이', '주먹만하고 흙이 묻어 있는 돌멩이이다.', true, 'COMMON', 'ETC'),
+(2, '손전등', '검은색 메탈 재질의 손잡이가 있는 LCD 손전등이다.', true, 'COMMON', 'ETC');
 
 insert into item_broker (id, item_id, dtype) values
-    (1, 1, 'floor');
+(1, 1, 'floor'),
+(2, 2, 'bag');
 
 insert into floor_item_broker (id, floor_id) values
 (1, 1);
+
+insert into bag_item_broker (id, bag_id) values
+(2, 1);
