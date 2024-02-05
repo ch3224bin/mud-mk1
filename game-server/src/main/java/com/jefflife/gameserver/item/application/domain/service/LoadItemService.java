@@ -9,23 +9,29 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ItemService implements LoadItemQuery {
+public class LoadItemService implements LoadItemQuery {
 
     private final LoadItemPort loadItemPort;
 
-    public ItemService(LoadItemPort loadItemPort) {
+    public LoadItemService(LoadItemPort loadItemPort) {
         this.loadItemPort = loadItemPort;
     }
 
     @Override
     public List<ItemModel> findByName(String name) {
-        List<Item> item = loadItemPort.findByName(name);
-        return ItemModel.of(item);
+        List<Item> items = loadItemPort.findByName(name);
+        return ItemModel.of(items);
     }
 
     @Override
     public List<ItemModel> findByFloorId(long floorId) {
-        List<Item> item = loadItemPort.findByFloorId(floorId);
-        return ItemModel.of(item);
+        List<Item> items = loadItemPort.findByFloorId(floorId);
+        return ItemModel.of(items);
+    }
+
+    @Override
+    public List<ItemModel> findByBagId(long bagId) {
+        List<Item> items = loadItemPort.findByBagId(bagId);
+        return ItemModel.of(items);
     }
 }

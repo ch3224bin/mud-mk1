@@ -5,4 +5,5 @@ import java.util.List;
 public interface LoadItemQuery {
     List<ItemModel> findByName(String name);
     List<ItemModel> findByFloorId(long floorId);
+    List<ItemModel> findByBagId(long bagId);
 }

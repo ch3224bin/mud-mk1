@@ -14,9 +14,4 @@ public class BagItemBrokerEntity extends ItemBrokerEntity {
     @ManyToOne
     @JoinColumn(name = "bag_id", nullable = false)
     private BagEntity bag;
-
-    public BagItemBrokerEntity(ItemEntity item, BagEntity bag) {
-        super(item);
-        this.bag = bag;
-    }
 }

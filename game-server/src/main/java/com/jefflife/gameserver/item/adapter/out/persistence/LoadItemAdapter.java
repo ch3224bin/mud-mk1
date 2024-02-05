@@ -1,5 +1,6 @@
 package com.jefflife.gameserver.item.adapter.out.persistence;
 
+import com.jefflife.gameserver.item.adapter.out.persistence.entity.BagItemBrokerEntity;
 import com.jefflife.gameserver.item.adapter.out.persistence.entity.FloorItemBrokerEntity;
 import com.jefflife.gameserver.item.adapter.out.persistence.entity.ItemEntity;
 import com.jefflife.gameserver.item.application.domain.model.Item;
@@ -13,10 +14,12 @@ import java.util.NoSuchElementException;
 public class LoadItemAdapter implements LoadItemPort {
     private final ItemRepository itemRepository;
     private final FloorRepository floorRepository;
+    private final BagRepository bagRepository;
 
-    public LoadItemAdapter(ItemRepository itemRepository, FloorRepository floorRepository) {
+    public LoadItemAdapter(ItemRepository itemRepository, FloorRepository floorRepository, BagRepository bagRepository) {
         this.itemRepository = itemRepository;
         this.floorRepository = floorRepository;
+        this.bagRepository = bagRepository;
     }
 
     @Override
@@ -36,5 +39,16 @@ public class LoadItemAdapter implements LoadItemPort {
                         .map(ItemEntity::toDomain)
                         .toList())
                 .orElseThrow(() -> new NoSuchElementException("Floor not found with ID: " + floorId));
+    }
+
+    @Override
+    public List<Item> findByBagId(long bagId) {
+        return bagRepository.findById(bagId)
+                .map(bag -> bag.getItems()
+                        .stream()
+                        .map(BagItemBrokerEntity::getItem)
+                        .map(ItemEntity::toDomain)
+                        .toList())
+                .orElseThrow(() -> new NoSuchElementException("Bag not found with ID: " + bagId));
     }
 }
