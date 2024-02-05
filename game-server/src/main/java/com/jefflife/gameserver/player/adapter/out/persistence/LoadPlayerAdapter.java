@@ -17,7 +17,7 @@ public class LoadPlayerAdapter implements LoadPlayerPort {
     @Override
     public Player findById(long id) {
         return playerRepository.findById(id)
-                .map(o -> new Player(o.getId(), o.getRoomId(), o.getName()))
+                .map(o -> new Player(o.getId(), o.getRoomId(), o.getName(), o.getBagId()))
                 .orElseThrow(() -> new NoSuchElementException("Player not found. player id: " + id));
     }
 }

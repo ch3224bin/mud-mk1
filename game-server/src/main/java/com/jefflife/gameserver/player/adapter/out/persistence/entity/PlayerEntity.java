@@ -18,10 +18,12 @@ public class PlayerEntity {
     private long roomId;
 
     private String name;
+    private long bagId;
 
-    public PlayerEntity(long id, long roomId, String name) {
+    public PlayerEntity(long id, long roomId, String name, long bagId) {
         this.id = id;
         this.roomId = roomId;
         this.name = name;
+        this.bagId = bagId;
     }
 }

@@ -23,7 +23,7 @@ public class LoadPlayerAdapterTest {
     @Test
     void testFindById() {
         // given
-        PlayerEntity jeff = new PlayerEntity(1L, 1L, "jeff");
+        PlayerEntity jeff = new PlayerEntity(1L, 1L, "jeff", 1L);
         playerRepository.save(jeff);
 
         // when
