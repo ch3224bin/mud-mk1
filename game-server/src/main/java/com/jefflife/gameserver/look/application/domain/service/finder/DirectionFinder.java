@@ -1,6 +1,5 @@
 package com.jefflife.gameserver.look.application.domain.service.finder;
 
-import com.jefflife.common.model.RoomCommonModel;
 import com.jefflife.common.model.VisibleObject;
 import com.jefflife.gameserver.look.application.port.in.LookCommandDataRequest;
 import com.jefflife.gameserver.look.application.port.out.FindRoomPort;
@@ -25,16 +24,11 @@ public class DirectionFinder implements Finder {
             return Optional.empty();
         }
 
-        final Direction direction = Direction.of(commandData.getTarget());
-        if (direction == null) {
-            return Optional.empty();
-        }
-
-        RoomCommonModel room = findRoomPort.findByPlayerId(playerId);
-        return room.getWayOuts().stream()
-                .filter(wayOut -> direction.matchedName(wayOut.getDirection()))
+        return Direction.of(commandData.getTarget())
+                .flatMap(direction -> findRoomPort.findByPlayerId(playerId).getWayOuts().stream()
+                .filter(wayOut -> direction.matchesDirection(wayOut.getDirection()))
                 .map(wayOut -> findRoomPort.findById(wayOut.getNextRoomId()))
-                .findFirst();
+                .findFirst());
     }
 
     enum Direction {
@@ -52,17 +46,17 @@ public class DirectionFinder implements Finder {
         }
 
 
-        public static Direction of(String direction) {
+        public static Optional<Direction> of(String direction) {
             for (Direction value : values()) {
                 if (value.synonyms.contains(direction)) {
-                    return value;
+                    return Optional.of(value);
                 }
             }
 
-            return null;
+            return Optional.empty();
         }
 
-        public boolean matchedName(String direction) {
+        public boolean matchesDirection(String direction) {
             return synonyms.contains(direction);
         }
     }
