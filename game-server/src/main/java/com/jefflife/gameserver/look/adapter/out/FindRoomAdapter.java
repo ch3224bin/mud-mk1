@@ -4,7 +4,6 @@ import com.jefflife.common.model.PlayerCommonModel;
 import com.jefflife.common.model.RoomCommonModel;
 import com.jefflife.gameserver.look.application.port.out.FindRoomPort;
 import com.jefflife.gameserver.map.application.port.in.LoadRoomQuery;
-import com.jefflife.gameserver.player.applicatoin.domain.model.Player;
 import com.jefflife.gameserver.player.applicatoin.port.in.LoadPlayerQuery;
 import org.springframework.stereotype.Component;
 
@@ -22,5 +21,10 @@ public class FindRoomAdapter implements FindRoomPort {
     public RoomCommonModel findByPlayerId(long playerId) {
         PlayerCommonModel player = loadPlayerQuery.getPlayer(playerId);
         return loadRoomQuery.getRoom(player.getRoomId());
+    }
+
+    @Override
+    public RoomCommonModel findById(long roomId) {
+        return loadRoomQuery.getRoom(roomId);
     }
 }

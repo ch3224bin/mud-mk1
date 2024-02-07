@@ -117,4 +117,29 @@ public class LookSystemTest {
             .body("payload.id", equalTo(2))
             .body("payload.name", equalTo(target));
     }
+
+    @DisplayName("동 봐 => 동쪽을 본다")
+    @Test
+    @Sql(scripts = "classpath:LookSystemTest-setup.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:LookSystemTest-cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    void testSeeTheDirection() {
+        // given
+        String playerId = "1";
+        String target = "동";
+        String action = "봐";
+
+        // when
+        given()
+            .header("Content-Type", "application/json")
+            .queryParam("playerId", playerId)
+            .queryParam("target", target)
+            .queryParam("action", action)
+        .when()
+            .get("/look")
+        .then()
+            .statusCode(200)
+            .body("payload.id", equalTo(2))
+            .body("payload.summary", equalTo("테스트 동쪽"))
+            .body("payload.description", equalTo("흰 빛으로 가득한 공간입니다."));
+    }
 }

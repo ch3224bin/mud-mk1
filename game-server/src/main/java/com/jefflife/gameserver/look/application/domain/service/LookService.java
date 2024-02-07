@@ -18,7 +18,6 @@ public class LookService implements LookQuery {
 
     @Override
     public VisibleObject look(long playerId, LookCommandDataRequest commandData) {
-        // TODO: 방향 조회
         return finders.findVisibleObject(playerId, commandData)
                 .orElseThrow(() -> new NoSuchElementException("대상을 찾을 수 없습니다."));
     }
