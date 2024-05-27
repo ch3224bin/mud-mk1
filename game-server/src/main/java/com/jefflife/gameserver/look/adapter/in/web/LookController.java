@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/look")
+@RequestMapping("/api/v1/look")
 public class LookController {
 
     private final LookQuery lookQuery;

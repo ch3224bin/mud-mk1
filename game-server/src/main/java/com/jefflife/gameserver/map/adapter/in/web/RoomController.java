@@ -22,7 +22,7 @@ import java.util.Map;
  * @author ChangHo Vin
  */
 @RestController
-@RequestMapping("/rooms")
+@RequestMapping("/api/v1/rooms")
 public class RoomController {
 
 	private final RoomModelAssembler assembler;

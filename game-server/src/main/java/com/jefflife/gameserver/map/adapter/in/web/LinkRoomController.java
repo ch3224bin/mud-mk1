@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/rooms")
+@RequestMapping("/api/v1/rooms")
 public class LinkRoomController {
     private final LinkRoomUseCase linkRoomUseCase;
 
