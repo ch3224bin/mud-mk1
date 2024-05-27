@@ -1,7 +1,6 @@
 package com.jefflife.frontapiserver.application.domain.service.command;
 
 import com.jefflife.common.model.CommandConstants;
-import com.jefflife.frontapiserver.application.domain.model.CommandData;
 import com.jefflife.frontapiserver.application.domain.model.CommandResult;
 import com.jefflife.frontapiserver.application.domain.model.CommandValue;
 import com.jefflife.frontapiserver.application.port.out.LookPort;
