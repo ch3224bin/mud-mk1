@@ -26,7 +26,7 @@ public class DirectionFinder implements Finder {
 
         return Direction.of(commandData.getTarget())
                 .flatMap(direction -> findRoomPort.findByPlayerId(playerId).getWayOuts().stream()
-                .filter(wayOut -> direction.matchesDirection(wayOut.getDirection()))
+                .filter(wayOut -> direction.matchesDirection(wayOut.getDirectionCode()))
                 .map(wayOut -> findRoomPort.findById(wayOut.getNextRoomId()))
                 .findFirst());
     }

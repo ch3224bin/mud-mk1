@@ -7,6 +7,6 @@ import lombok.Getter;
 @Getter
 public class WayOutModel extends WayOutCommonModel {
 	public WayOutModel(WayOut wayout) {
-		super(wayout.getId(), wayout.getRoomId(), wayout.getNextRoomId(), wayout.getDirection().getName(), wayout.isShow(), wayout.getDoor().isLocked());
+		super(wayout.getId(), wayout.getRoomId(), wayout.getNextRoomId(), wayout.getDirection().name(), wayout.getDirection().getName(), wayout.isShow(), wayout.getDoor().isLocked());
 	}
 }
