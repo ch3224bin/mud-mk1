@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.item.application.port.in;
 
-import com.jefflife.common.model.ItemCommonModel;
+import com.jefflife.gameserver.item.application.domain.service.model.ItemCommonModel;
 import com.jefflife.gameserver.item.application.domain.model.Item;
 
 import java.util.List;

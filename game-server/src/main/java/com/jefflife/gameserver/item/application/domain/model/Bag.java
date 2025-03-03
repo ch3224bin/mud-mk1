@@ -1,6 +1,6 @@
 package com.jefflife.gameserver.item.application.domain.model;
 
-import com.jefflife.common.model.ItemsCommonModel;
+import com.jefflife.gameserver.item.application.domain.service.model.ItemsCommonModel;
 import lombok.Getter;
 
 @Getter
