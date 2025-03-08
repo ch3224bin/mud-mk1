@@ -1,11 +1,11 @@
-package com.jefflife.gameserver.command.adapter.look.in.rest;
+package com.jefflife.gameserver.command.look.adapter.in.rest;
 
 import com.jefflife.common.model.CommandDataCommonModel;
 import com.jefflife.common.model.VisibleObject;
-import com.jefflife.gameserver.command.adapter.look.in.rest.response.LookResult;
-import com.jefflife.gameserver.command.application.look.domain.LookCommandDataRequest;
-import com.jefflife.gameserver.command.application.look.domain.LookCommandDataRequestValidator;
-import com.jefflife.gameserver.command.application.look.port.in.LookQuery;
+import com.jefflife.gameserver.command.look.adapter.in.rest.response.LookResult;
+import com.jefflife.gameserver.command.look.application.domain.LookCommandDataRequest;
+import com.jefflife.gameserver.command.look.application.domain.LookCommandDataRequestValidator;
+import com.jefflife.gameserver.command.look.application.port.in.LookQuery;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

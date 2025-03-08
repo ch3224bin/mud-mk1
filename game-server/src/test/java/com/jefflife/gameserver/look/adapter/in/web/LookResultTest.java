@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.look.adapter.in.web;
 
 import com.jefflife.common.model.VisibleObject;
-import com.jefflife.gameserver.command.adapter.look.in.rest.response.LookResult;
+import com.jefflife.gameserver.command.look.adapter.in.rest.response.LookResult;
 import com.jefflife.gameserver.map.application.domain.model.Room;
 import com.jefflife.gameserver.map.application.port.in.RoomModel;
 import org.junit.jupiter.api.Test;

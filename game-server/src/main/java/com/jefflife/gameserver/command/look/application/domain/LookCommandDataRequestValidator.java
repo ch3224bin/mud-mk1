@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.command.application.look.domain;
+package com.jefflife.gameserver.command.look.application.domain;
 
 import com.jefflife.common.model.CommandConstants;
 import com.jefflife.common.model.CommandDataCommonModel;

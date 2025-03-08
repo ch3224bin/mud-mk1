@@ -1,4 +1,4 @@
-package com.jefflife.gameserver.command.adapter.look.in.rest.response;
+package com.jefflife.gameserver.command.look.adapter.in.rest.response;
 
 import com.jefflife.common.model.LookResultCommonModel;
 import com.jefflife.common.model.VisibleObject;

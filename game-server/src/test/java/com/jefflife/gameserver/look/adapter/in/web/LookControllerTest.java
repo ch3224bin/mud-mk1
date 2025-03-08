@@ -1,7 +1,7 @@
 package com.jefflife.gameserver.look.adapter.in.web;
 
-import com.jefflife.gameserver.command.adapter.look.in.rest.LookController;
-import com.jefflife.gameserver.command.application.look.port.in.LookQuery;
+import com.jefflife.gameserver.command.look.adapter.in.rest.LookController;
+import com.jefflife.gameserver.command.look.application.port.in.LookQuery;
 import com.jefflife.gameserver.map.application.domain.model.Room;
 import com.jefflife.gameserver.map.application.port.in.RoomModel;
 import org.junit.jupiter.api.DisplayName;
